@@ -1,11 +1,11 @@
-import { styled, Typography, Button } from "@mui/material";
+import MainLayout from "@/styles/MainLayout";
+import HomePageBody from "@/components/HomePageBody";
 
 const HomePage = () => {
   return (
-    <>
-      <Typography color="primary">HomePage</Typography>
-      <Button color="primary" variant="outlined">SSR Button</Button>
-    </>
+    <MainLayout>
+      <HomePageBody />
+    </MainLayout>
   );
 };
 

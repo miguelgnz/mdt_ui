@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import { Cinzel, Montserrat_Alternates } from "next/font/google";
+import { Cinzel, Montserrat_Alternates, Montserrat } from "next/font/google";
 
 const cinzel = Cinzel({
   style: "normal",
@@ -7,8 +7,14 @@ const cinzel = Cinzel({
 });
 
 const montserratAlternates = Montserrat_Alternates({
-  weight: "300",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   style: "normal",
+  subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
+  style: "normal",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
 
@@ -47,6 +53,45 @@ const theme = createTheme({
     },
   },
   typography: {
+    h1: {
+      fontFamily: cinzel.style.fontFamily,
+      fontSize: "48px",
+      "@media (max-width:600px)": {
+        fontSize: "30px",
+      },
+    },
+    //For navbar & footer links
+    h5: {
+      fontFamily: cinzel.style.fontFamily,
+      fontSize: "18px",
+      fontWeight: 500,
+      letterSpacing: '0.57px',
+      "@media (max-width:600px)": {
+        fontSize: "16px",
+      },
+    },
+    h6: {
+      fontFamily: cinzel.style.fontFamily,
+      fontSize: "16px",
+      fontWeight: 500,
+      letterSpacing: '0.57px',
+      "@media (max-width:600px)": {
+        fontSize: "14px",
+      },
+    },
+    body2: {
+      fontFamily: montserrat.style.fontFamily,
+      fontSize: "14px",
+      fontWeight: 300,
+      letterSpacing: '0.51px',
+      "@media (max-width:600px)": {
+        fontSize: "12px",
+      },
+    },
+    button: {
+      fontFamily: montserrat.style.fontFamily,
+    },
+
     fontFamily: montserratAlternates.style.fontFamily,
   },
 });
