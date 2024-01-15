@@ -41,6 +41,15 @@ const theme = createTheme({
       xl: 1536,
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: "10px",
+        },
+      },
+    },
+  },
   palette: {
     primary: {
       main: "#FFFFFF",
@@ -55,9 +64,18 @@ const theme = createTheme({
   typography: {
     h1: {
       fontFamily: cinzel.style.fontFamily,
-      fontSize: "48px",
+      fontSize: "64px",
+      fontWeight: 500,
       "@media (max-width:600px)": {
-        fontSize: "30px",
+        fontSize: "38px",
+      },
+    },
+    h2: {
+      fontFamily: cinzel.style.fontFamily,
+      fontSize: "26px",
+      fontWeight: 200,
+      "@media (max-width:600px)": {
+        fontSize: "18px",
       },
     },
     //For navbar & footer links
@@ -65,7 +83,7 @@ const theme = createTheme({
       fontFamily: cinzel.style.fontFamily,
       fontSize: "18px",
       fontWeight: 500,
-      letterSpacing: '0.57px',
+      letterSpacing: "0.57px",
       "@media (max-width:600px)": {
         fontSize: "16px",
       },
@@ -74,7 +92,7 @@ const theme = createTheme({
       fontFamily: cinzel.style.fontFamily,
       fontSize: "16px",
       fontWeight: 500,
-      letterSpacing: '0.57px',
+      letterSpacing: "0.57px",
       "@media (max-width:600px)": {
         fontSize: "14px",
       },
@@ -83,13 +101,17 @@ const theme = createTheme({
       fontFamily: montserrat.style.fontFamily,
       fontSize: "14px",
       fontWeight: 300,
-      letterSpacing: '0.51px',
+      letterSpacing: "0.51px",
       "@media (max-width:600px)": {
         fontSize: "12px",
       },
     },
     button: {
       fontFamily: montserrat.style.fontFamily,
+      fontSize: "14px",
+      "@media (max-width:600px)": {
+        fontSize: "12px",
+      },
     },
 
     fontFamily: montserratAlternates.style.fontFamily,
