@@ -82,7 +82,7 @@ const theme = createTheme({
     h5: {
       fontFamily: cinzel.style.fontFamily,
       fontSize: "18px",
-      fontWeight: 500,
+      fontWeight: 600,
       letterSpacing: "0.57px",
       "@media (max-width:600px)": {
         fontSize: "16px",
@@ -93,6 +93,15 @@ const theme = createTheme({
       fontSize: "16px",
       fontWeight: 500,
       letterSpacing: "0.57px",
+      "@media (max-width:600px)": {
+        fontSize: "14px",
+      },
+    },
+    body1: {
+      fontFamily: montserrat.style.fontFamily,
+      fontSize: "16px",
+      fontWeight: 300,
+      letterSpacing: "0.51px",
       "@media (max-width:600px)": {
         fontSize: "14px",
       },
