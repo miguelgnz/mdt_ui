@@ -6,7 +6,7 @@ const MainContainer = styled("div")(({ theme }) => ({
   position: "relative",
   height: "600px",
   [theme.breakpoints.down("md")]: {
-      height: "480px",
+    height: "480px",
   },
 }));
 
@@ -16,7 +16,7 @@ const HeroContent = styled("div")(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  gap: '38px',
+  gap: "38px",
   [theme.breakpoints.down("md")]: {},
 }));
 
@@ -27,12 +27,21 @@ const HeroSection = () => {
         src={heroImg}
         alt="heroImg"
         fill
-        // height={300}
-        // width={500}
-        style={{ objectFit: "cover", filter: "opacity(0.5)", zIndex: "-1" }}
+        style={{
+          objectFit: "cover",
+          borderRadius: "16px",
+          filter: "opacity(0.5)",
+          zIndex: "-1",
+        }}
       />
       <HeroContent>
-        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Typography variant="h1" color={"primary"}>
             MAR DE TINTA
           </Typography>
