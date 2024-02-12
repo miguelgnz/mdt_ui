@@ -1,3 +1,5 @@
+import art1 from '@/images/art1.png'
+
 export const menuData = {
   menu: {
     items: [
@@ -55,3 +57,43 @@ export const highlightsData = [
     iconSrc: "./skull.svg",
   },
 ] as Highlight[];
+
+type Skill = {
+  id: number;
+  name: string;
+};
+
+type Artist = {
+  id: number;
+  name: string;
+  bio: string;
+  instaUrl: string;
+  skills: Skill[];
+  avatar: string;
+  workPhoto: string | any;
+}
+
+export const artistsData = [
+  {
+    id: 1,
+    name: 'Raynaroc',
+    instaUrl: 'https://www.instagram.com/miguel_gnz/',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.',
+    skills: [
+      {
+        id: 1,
+        name: 'Fine Line'
+      },
+      {
+        id: 2,
+        name: 'Black & Grey'
+      },
+      {
+        id: 3,
+        name: 'Realismo'
+      },
+    ],
+    avatar: 'raynaroc.jpg',
+    workPhoto: art1
+  }
+] as Artist[]

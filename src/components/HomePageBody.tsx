@@ -1,6 +1,7 @@
 import { styled } from "@mui/material";
-import HeroSection from "./HeroSection";
+import HeroSection from "@/components/HeroSection";
 import HighlightsSection from "@/components/HighlightsSection";
+import ArtistsSection from "@/components/ArtistsSection";
 
 const BodyMainContainer = styled("div")(({ theme }) => ({
   // display: "flex",
@@ -15,6 +16,7 @@ const HomePageBody = () => {
   return (
     <BodyMainContainer id="body-main-container">
       <HeroSection />
+      <ArtistsSection />
       <HighlightsSection />
     </BodyMainContainer>
   );

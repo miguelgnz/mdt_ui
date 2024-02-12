@@ -49,6 +49,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: "12px",
+          height: '28px',
+          fontSize: '12px'
+        },
+      },
+    },
   },
   palette: {
     primary: {
