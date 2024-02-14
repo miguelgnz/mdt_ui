@@ -53,7 +53,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "12px",
-          height: '28px',
+          height: '26px',
           fontSize: '12px'
         },
       },

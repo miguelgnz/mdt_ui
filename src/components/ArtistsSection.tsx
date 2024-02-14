@@ -22,6 +22,19 @@ const SectionTitleWrapper = styled("div")(({ theme }) => ({
   },
 }));
 
+const CardsContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  gap: "64px",
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  maxWidth: theme.breakpoints.values.md,
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    gap: "48px",
+  },
+}));
+
 const ArtistsSection = () => {
   return (
     <MainContainer>
@@ -35,21 +48,23 @@ const ArtistsSection = () => {
           minim veniam
         </Typography>
       </SectionTitleWrapper>
-      {artistsData.map((artist) => {
-        return (
-          <ArtistCard
-            key={artist.id}
-            id={artist.id}
-            name={artist.name}
-            instaUrl={artist.instaUrl}
-            bio={artist.bio}
-            skills={artist.skills}
-            avatar={artist.avatar}
-            featuredPhoto={artist.featuredPhoto}
-            artPhotos={artist.artPhotos}
-          />
-        );
-      })}
+      <CardsContainer>
+        {artistsData.map((artist) => {
+          return (
+            <ArtistCard
+              key={artist.id}
+              id={artist.id}
+              name={artist.name}
+              instaUrl={artist.instaUrl}
+              bio={artist.bio}
+              skills={artist.skills}
+              avatar={artist.avatar}
+              featuredPhoto={artist.featuredPhoto}
+              artPhotos={artist.artPhotos}
+            />
+          );
+        })}
+      </CardsContainer>
     </MainContainer>
   );
 };

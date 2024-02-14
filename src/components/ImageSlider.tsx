@@ -1,5 +1,5 @@
-import { IconButton, styled } from "@mui/material";
-import Image from "next/image";
+import { Box, IconButton, styled } from "@mui/material";
+import Image, { StaticImageData } from "next/image";
 import {
   TbSquareRoundedChevronLeft,
   TbSquareRoundedChevronRight,
@@ -49,16 +49,35 @@ const ImageSlider = ({ imageUrls }: Props) => {
 
   return (
     <>
-      <Image
-        src={imageUrls[imageIndex]}
-        alt={`${imageIndex}`}
-        style={{
-          objectFit: "cover",
+      <Box
+        sx={{
           width: "100%",
           height: "100%",
-          borderRadius: "0 0 12px 12px",
+          display: "flex",
+          flexDirection: 'row',
+          overflow: 'hidden'
         }}
-      />
+      >
+        {imageUrls.map((url: StaticImageData, index: number) => {
+          return (
+            <Image
+              key={index}
+              src={url}
+              alt={`${url}`}
+              style={{
+                objectFit: "cover",
+                width: "100%",
+                height: "100%",
+                borderRadius: "0 0 12px 12px",
+                translate: `${-100 * imageIndex}%`,
+                flexShrink: '0',
+                flexGrow: '0',
+                transition: 'translate 200ms ease-in-out'
+              }}
+            />
+          );
+        })}
+      </Box>
       <StyledIconButton
         color="primary"
         sx={{ left: "0" }}

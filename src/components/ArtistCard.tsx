@@ -58,14 +58,17 @@ const MediaWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   position: "relative",
   width: "100%",
-  height: "auto",
-  [theme.breakpoints.down("md")]: {},
+  height: "255px",
+  [theme.breakpoints.down("md")]: {
+    height: "268px",
+
+  },
 }));
 
 const UpperSubcardWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  padding: "16px 12px",
+  padding: "16px 12px 0 12px",
   [theme.breakpoints.down("md")]: {},
 }));
 

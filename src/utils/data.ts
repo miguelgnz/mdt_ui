@@ -82,7 +82,88 @@ export const artistsData = [
     id: 1,
     name: 'Raynaroc',
     instaUrl: 'https://www.instagram.com/miguel_gnz/',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.',
+    skills: [
+      {
+        id: 1,
+        name: 'Fine Line'
+      },
+      {
+        id: 2,
+        name: 'Black & Grey'
+      },
+      {
+        id: 3,
+        name: 'Realismo'
+      },
+      {
+        id: 4,
+        name: 'TestDev'
+      },
+    ],
+    avatar: 'raynaroc.jpg',
+    featuredPhoto: art1,
+    artPhotos: [art1, art2, art3]
+  },
+  {
+    id: 2,
+    name: 'Nicole',
+    instaUrl: 'https://www.instagram.com/miguel_gnz/',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.',
+    skills: [
+      {
+        id: 1,
+        name: 'Fine Line'
+      },
+      {
+        id: 2,
+        name: 'Black & Grey'
+      },
+      {
+        id: 3,
+        name: 'Realismo'
+      },
+      {
+        id: 4,
+        name: 'TestDev'
+      },
+    ],
+    avatar: 'raynaroc.jpg',
+    featuredPhoto: art1,
+    artPhotos: [art1, art2, art3]
+  },
+  {
+    id: 3,
+    name: 'Dylan',
+    instaUrl: 'https://www.instagram.com/miguel_gnz/',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.',
+    skills: [
+      {
+        id: 1,
+        name: 'Fine Line'
+      },
+      {
+        id: 2,
+        name: 'Black & Grey'
+      },
+      {
+        id: 3,
+        name: 'Realismo'
+      },
+      {
+        id: 4,
+        name: 'TestDev'
+      },
+    ],
+    avatar: 'raynaroc.jpg',
+    featuredPhoto: art1,
+    artPhotos: [art1, art2, art3]
+  },
+  {
+    id: 4,
+    name: 'Dennis',
+    instaUrl: 'https://www.instagram.com/miguel_gnz/',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.',
     skills: [
       {
         id: 1,
