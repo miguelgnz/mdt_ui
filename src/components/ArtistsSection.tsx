@@ -1,4 +1,4 @@
-import { Box, Typography, styled } from "@mui/material";
+import { Typography, styled } from "@mui/material";
 import { artistsData } from "@/utils/data";
 import ArtistCard from "@/components/ArtistCard";
 
@@ -45,7 +45,8 @@ const ArtistsSection = () => {
             bio={artist.bio}
             skills={artist.skills}
             avatar={artist.avatar}
-            workPhoto={artist.workPhoto}
+            featuredPhoto={artist.featuredPhoto}
+            artPhotos={artist.artPhotos}
           />
         );
       })}

@@ -1,4 +1,7 @@
-import art1 from '@/images/art1.png'
+import { StaticImageData } from "next/image";
+import art1 from "@/images/artist2/art1.jpg"
+import art2 from "@/images/artist2/art2.jpg"
+import art3 from "@/images/artist2/art3.jpg"
 
 export const menuData = {
   menu: {
@@ -70,7 +73,8 @@ type Artist = {
   instaUrl: string;
   skills: Skill[];
   avatar: string;
-  workPhoto: string | any;
+  featuredPhoto: StaticImageData;
+  artPhotos?: StaticImageData[];
 }
 
 export const artistsData = [
@@ -92,8 +96,13 @@ export const artistsData = [
         id: 3,
         name: 'Realismo'
       },
+      {
+        id: 4,
+        name: 'TestDev'
+      },
     ],
     avatar: 'raynaroc.jpg',
-    workPhoto: art1
+    featuredPhoto: art1,
+    artPhotos: [art1, art2, art3]
   }
 ] as Artist[]
