@@ -36,7 +36,7 @@ const HighlightsSection = () => {
             <Box>
               <Image src={e.iconSrc} alt="logo" width={100} height={100} />
             </Box>
-            <Typography color="primary" variant="h5">
+            <Typography color="primary" variant="h5" textAlign="center">
               {e.title}
             </Typography>
             <Typography color="primary" variant="body1" textAlign="center">

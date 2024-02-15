@@ -1,6 +1,7 @@
 import { Button, Box, Typography, styled } from "@mui/material";
 import Image from "next/image";
 import heroImg from "@/images/hero.jpeg";
+import { heroSectionData } from "@/utils/data";
 
 const MainContainer = styled("div")(({ theme }) => ({
   position: "relative",
@@ -29,9 +30,10 @@ const HeroSection = () => {
         fill
         style={{
           objectFit: "cover",
-          borderRadius: "16px",
+          borderRadius: "18px",
           filter: "opacity(0.5)",
           zIndex: "-1",
+          padding: '0 16px'
         }}
       />
       <HeroContent>
@@ -43,13 +45,13 @@ const HeroSection = () => {
           }}
         >
           <Typography variant="h1" color={"primary"}>
-            MAR DE TINTA
+            {heroSectionData.title}
           </Typography>
           <Typography variant="h2" color={"primary"}>
-            Tattoo / Body Piercings
+            {heroSectionData.subtitle}
           </Typography>
         </Box>
-        <Button variant="outlined">AGENDA TU CITA</Button>
+        <Button variant="outlined">{heroSectionData.actionButton}</Button>
       </HeroContent>
     </MainContainer>
   );

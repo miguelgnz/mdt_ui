@@ -30,6 +30,18 @@ export const menuData = {
   },
 };
 
+type HeroSection = {
+  title: string;
+  subtitle: string;
+  actionButton: string;
+}
+
+export const heroSectionData = {
+  title: 'MAR DE TINTA',
+  subtitle: 'Tattoo / Body Piercings',
+  actionButton: 'AGENDA TU CITA'
+} as HeroSection
+
 type Highlight = {
   id: number;
   title: string;
