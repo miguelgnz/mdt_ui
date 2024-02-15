@@ -128,7 +128,7 @@ const Navbar = () => {
             return (
               <StyledLink key={item.id} href={item.url}>
                 <MenuItem>
-                  <Typography variant="h5">{item.text}</Typography>
+                  <Typography variant="h5" fontWeight={400} letterSpacing={1.5}>{item.text}</Typography>
                 </MenuItem>
               </StyledLink>
             );

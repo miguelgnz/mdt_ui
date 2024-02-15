@@ -7,7 +7,7 @@ const MainContainer = styled("div")(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   gap: "54px",
-  padding: "64px 0",
+  padding: "64px 16px",
   [theme.breakpoints.down("md")]: {},
 }));
 

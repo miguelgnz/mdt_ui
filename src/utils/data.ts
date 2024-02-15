@@ -93,7 +93,7 @@ export const artistsData = [
   {
     id: 1,
     name: "Raynaroc",
-    instaUrl: "https://www.instagram.com/miguel_gnz/",
+    instaUrl: "https://www.instagram.com/raynaroc",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
