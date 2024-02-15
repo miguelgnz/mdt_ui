@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
-import art1 from "@/images/artist2/art1.jpg"
-import art2 from "@/images/artist2/art2.jpg"
-import art3 from "@/images/artist2/art3.jpg"
+import art1 from "@/images/artist2/art1.jpg";
+import art2 from "@/images/artist2/art2.jpg";
+import art3 from "@/images/artist2/art3.jpg";
 
 export const menuData = {
   menu: {
@@ -75,115 +75,126 @@ type Artist = {
   avatar: string;
   featuredPhoto: StaticImageData;
   artPhotos?: StaticImageData[];
-}
+};
 
 export const artistsData = [
   {
     id: 1,
-    name: 'Raynaroc',
-    instaUrl: 'https://www.instagram.com/miguel_gnz/',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.',
+    name: "Raynaroc",
+    instaUrl: "https://www.instagram.com/miguel_gnz/",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
         id: 1,
-        name: 'Fine Line'
+        name: "Fine Line",
       },
       {
         id: 2,
-        name: 'Black & Grey'
+        name: "Black & Grey",
       },
       {
         id: 3,
-        name: 'Realismo'
+        name: "Realismo",
       },
       {
         id: 4,
-        name: 'TestDev'
+        name: "TestDev",
       },
     ],
-    avatar: 'raynaroc.jpg',
+    avatar: "raynaroc.jpg",
     featuredPhoto: art1,
-    artPhotos: [art1, art2, art3]
+    artPhotos: [art1, art2, art3],
   },
   {
     id: 2,
-    name: 'Nicole',
-    instaUrl: 'https://www.instagram.com/miguel_gnz/',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.',
+    name: "Nicole",
+    instaUrl: "https://www.instagram.com/miguel_gnz/",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
         id: 1,
-        name: 'Fine Line'
+        name: "Fine Line",
       },
       {
         id: 2,
-        name: 'Black & Grey'
+        name: "Black & Grey",
       },
       {
         id: 3,
-        name: 'Realismo'
+        name: "Realismo",
       },
       {
         id: 4,
-        name: 'TestDev'
+        name: "TestDev",
       },
     ],
-    avatar: 'raynaroc.jpg',
+    avatar: "raynaroc.jpg",
     featuredPhoto: art1,
-    artPhotos: [art1, art2, art3]
+    artPhotos: [art1, art2, art3],
   },
   {
     id: 3,
-    name: 'Dylan',
-    instaUrl: 'https://www.instagram.com/miguel_gnz/',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.',
+    name: "Dylan",
+    instaUrl: "https://www.instagram.com/miguel_gnz/",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
         id: 1,
-        name: 'Fine Line'
+        name: "Fine Line",
       },
       {
         id: 2,
-        name: 'Black & Grey'
+        name: "Black & Grey",
       },
       {
         id: 3,
-        name: 'Realismo'
+        name: "Realismo",
       },
       {
         id: 4,
-        name: 'TestDev'
+        name: "TestDev",
       },
     ],
-    avatar: 'raynaroc.jpg',
+    avatar: "raynaroc.jpg",
     featuredPhoto: art1,
-    artPhotos: [art1, art2, art3]
+    artPhotos: [art1, art2, art3],
   },
   {
     id: 4,
-    name: 'Dennis',
-    instaUrl: 'https://www.instagram.com/miguel_gnz/',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.',
+    name: "Dennis",
+    instaUrl: "https://www.instagram.com/miguel_gnz/",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
         id: 1,
-        name: 'Fine Line'
+        name: "Fine Line",
       },
       {
         id: 2,
-        name: 'Black & Grey'
+        name: "Black & Grey",
       },
       {
         id: 3,
-        name: 'Realismo'
+        name: "Realismo",
       },
       {
         id: 4,
-        name: 'TestDev'
+        name: "TestDev",
       },
     ],
-    avatar: 'raynaroc.jpg',
+    avatar: "raynaroc.jpg",
     featuredPhoto: art1,
-    artPhotos: [art1, art2, art3]
-  }
-] as Artist[]
+    artPhotos: [art1, art2, art3],
+  },
+] as Artist[];
+
+type AboutSection = {
+  title: string;
+  description: string;
+};
+
+export const aboutSectionData = {
+  title: "Sobre Nosotros",
+  description:
+    "Et netus et malesuada fames. Mauris pharetra et ultrices neque ornare aenean. Suscipit tellus mauris a diam maecenas sed enim ut sem. At ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget. Tellus mauris a diam maecenas sed enim ut. In hendrerit gravida rutrum quisque non tellus orci ac auctor. Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper.",
+} as AboutSection;
