@@ -119,7 +119,7 @@ export const artistsData = [
   },
   {
     id: 2,
-    name: "Nicole",
+    name: "Dennis",
     instaUrl: "https://www.instagram.com/miguel_gnz/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
@@ -140,7 +140,7 @@ export const artistsData = [
         name: "TestDev",
       },
     ],
-    avatar: "raynaroc.jpg",
+    avatar: "dennis.jpg",
     featuredPhoto: art1,
     artPhotos: [art1, art2, art3],
   },
@@ -167,13 +167,13 @@ export const artistsData = [
         name: "TestDev",
       },
     ],
-    avatar: "raynaroc.jpg",
+    avatar: "dylan.jpg",
     featuredPhoto: art1,
     artPhotos: [art1, art2, art3],
   },
   {
     id: 4,
-    name: "Dennis",
+    name: "Danny",
     instaUrl: "https://www.instagram.com/miguel_gnz/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
@@ -194,7 +194,34 @@ export const artistsData = [
         name: "TestDev",
       },
     ],
-    avatar: "raynaroc.jpg",
+    avatar: "danny.jpg",
+    featuredPhoto: art1,
+    artPhotos: [art1, art2, art3],
+  },
+  {
+    id: 5,
+    name: "Nicole",
+    instaUrl: "https://www.instagram.com/miguel_gnz/",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
+    skills: [
+      {
+        id: 1,
+        name: "Fine Line",
+      },
+      {
+        id: 2,
+        name: "Black & Grey",
+      },
+      {
+        id: 3,
+        name: "Realismo",
+      },
+      {
+        id: 4,
+        name: "TestDev",
+      },
+    ],
+    avatar: "nicole.jpg",
     featuredPhoto: art1,
     artPhotos: [art1, art2, art3],
   },
@@ -232,14 +259,14 @@ export const featuredSectionData: FeaturedSectionData = {
     row1: [
       {
         imageSrc: art1,
-        avatarSrc: "raynaroc.jpg",
+        avatarSrc: "nicole.jpg",
         avatarSize: 40,
         author: "Nicole",
         typographyVariant: "body2",
       },
       {
         imageSrc: art1, 
-        avatarSrc: "raynaroc.jpg",
+        avatarSrc: "dylan.jpg",
         avatarSize: 40,
         author: "Dylan",
         typographyVariant: "body2",
@@ -247,16 +274,17 @@ export const featuredSectionData: FeaturedSectionData = {
     ],
     row2: [
       {
-        imageSrc: art1,         avatarSrc: "raynaroc.jpg",
+        imageSrc: art1,         
+        avatarSrc: "dennis.jpg",
         avatarSize: 40,
         author: "Dennis",
         typographyVariant: "body2",
       },
       {
         imageSrc: art1, 
-        avatarSrc: "raynaroc.jpg",
+        avatarSrc: "danny.jpg",
         avatarSize: 40,
-        author: "Daniel",
+        author: "Danny",
         typographyVariant: "body2",
       },
     ],

@@ -49,7 +49,7 @@ const SecondaryFeaturedWrapper = styled("div")(({ theme }) => ({
 const PrimaryFeaturedWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "flex-end",
-  padding: "14px",
+  padding: "10px",
   width: "50%",
   position: "relative",
   [theme.breakpoints.down("md")]: {
@@ -103,26 +103,6 @@ const FeaturedSection = () => {
               );
             })}
           </StyledRow>
-          {/* <StyledRow id="row1">
-            <ImageContainer>
-              <FeaturedImageView
-                imageSrc={art1}
-                avatarSrc="raynaroc.jpg"
-                avatarSize={40}
-                author="Raynaroc"
-                typographyVariant="body2"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <FeaturedImageView
-                imageSrc={art1}
-                avatarSrc="raynaroc.jpg"
-                avatarSize={40}
-                author="Raynaroc"
-                typographyVariant="body2"
-              />
-            </ImageContainer>
-          </StyledRow> */}
           <StyledRow id="row1">
             {secondaryFeaturedImages.row2.map((e, i) => {
               return (
@@ -138,26 +118,6 @@ const FeaturedSection = () => {
               );
             })}
           </StyledRow>
-          {/* <StyledRow id="row2">
-            <ImageContainer>
-              <FeaturedImageView
-                imageSrc={art1}
-                avatarSrc="raynaroc.jpg"
-                avatarSize={40}
-                author="Raynaroc"
-                typographyVariant="body2"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <FeaturedImageView
-                imageSrc={art1}
-                avatarSrc="raynaroc.jpg"
-                avatarSize={40}
-                author="Raynaroc"
-                typographyVariant="body2"
-              />
-            </ImageContainer>
-          </StyledRow> */}
         </SecondaryFeaturedWrapper>
         <PrimaryFeaturedWrapper>
           <FeaturedImageView
