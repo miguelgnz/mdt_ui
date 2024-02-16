@@ -34,13 +34,13 @@ type HeroSection = {
   title: string;
   subtitle: string;
   actionButton: string;
-}
+};
 
 export const heroSectionData = {
-  title: 'MAR DE TINTA',
-  subtitle: 'Tattoo / Body Piercings',
-  actionButton: 'AGENDA TU CITA'
-} as HeroSection
+  title: "MAR DE TINTA",
+  subtitle: "Tattoo / Body Piercings",
+  actionButton: "AGENDA TU CITA",
+} as HeroSection;
 
 type Highlight = {
   id: number;
@@ -210,3 +210,62 @@ export const aboutSectionData = {
   description:
     "Et netus et malesuada fames. Mauris pharetra et ultrices neque ornare aenean. Suscipit tellus mauris a diam maecenas sed enim ut sem. At ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget. Tellus mauris a diam maecenas sed enim ut. In hendrerit gravida rutrum quisque non tellus orci ac auctor. Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper.",
 } as AboutSection;
+
+export interface FeaturedImageData {
+  imageSrc: string | StaticImageData;
+  avatarSrc: string;
+  avatarSize: number;
+  author: string;
+  typographyVariant: string;
+}
+
+export interface FeaturedSectionData {
+  secondaryFeaturedImages: {
+    row1: FeaturedImageData[];
+    row2: FeaturedImageData[];
+  };
+  primaryFeaturedImage: FeaturedImageData;
+}
+
+export const featuredSectionData: FeaturedSectionData = {
+  secondaryFeaturedImages: {
+    row1: [
+      {
+        imageSrc: art1,
+        avatarSrc: "raynaroc.jpg",
+        avatarSize: 40,
+        author: "Nicole",
+        typographyVariant: "body2",
+      },
+      {
+        imageSrc: art1, 
+        avatarSrc: "raynaroc.jpg",
+        avatarSize: 40,
+        author: "Dylan",
+        typographyVariant: "body2",
+      },
+    ],
+    row2: [
+      {
+        imageSrc: art1,         avatarSrc: "raynaroc.jpg",
+        avatarSize: 40,
+        author: "Dennis",
+        typographyVariant: "body2",
+      },
+      {
+        imageSrc: art1, 
+        avatarSrc: "raynaroc.jpg",
+        avatarSize: 40,
+        author: "Daniel",
+        typographyVariant: "body2",
+      },
+    ],
+  },
+  primaryFeaturedImage: {
+    imageSrc: art1,
+    avatarSrc: "raynaroc.jpg",
+    avatarSize: 60,
+    author: "Raynaroc",
+    typographyVariant: "body1",
+  },
+};
