@@ -58,10 +58,9 @@ const MediaWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   position: "relative",
   width: "100%",
-  height: "255px",
+  height: "259px",
   [theme.breakpoints.down("md")]: {
-    height: "268px",
-
+    height: "271px",
   },
 }));
 
@@ -80,41 +79,45 @@ type Skill = {
 const ArtistCard = (props: Props) => {
   return (
     <MainContainer>
-      <UpperSubcardWrapper>
-        <Link href={props.instaUrl} target="blank">
+      <Link href={props.instaUrl} target="blank">
+        <UpperSubcardWrapper>
           <Icon
             component={FaInstagram}
             sx={{ color: "#FFF", fontSize: "28px" }}
           />
-        </Link>
-        <AvatarWrapper>
-          <Avatar
-            alt={props.name}
-            src={props.avatar}
-            sx={{ width: "82px", height: "82px" }}
-          />
-          <Typography color="primary" variant="h6">
-            {props.name}
-          </Typography>
-        </AvatarWrapper>
-        <BioWrapper>
-          <Typography color="primary" textAlign="center" variant="body2">
-            {props.bio}
-          </Typography>
-        </BioWrapper>
-        <SkillsWrapper>
-          {props.skills.map((skill, index) => {
-            return (
-              <Chip
-                key={index}
-                color="primary"
-                variant="outlined"
-                label={skill.name}
-              />
-            );
-          })}
-        </SkillsWrapper>
-      </UpperSubcardWrapper>
+          <AvatarWrapper>
+            <Avatar
+              alt={props.name}
+              src={props.avatar}
+              sx={{
+                width: "82px",
+                height: "82px",
+                boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+              }}
+            />
+            <Typography color="primary" variant="h6">
+              {props.name}
+            </Typography>
+          </AvatarWrapper>
+          <BioWrapper>
+            <Typography color="primary" textAlign="center" variant="body2">
+              {props.bio}
+            </Typography>
+          </BioWrapper>
+          <SkillsWrapper>
+            {props.skills.map((skill, index) => {
+              return (
+                <Chip
+                  key={index}
+                  color="primary"
+                  variant="outlined"
+                  label={skill.name}
+                />
+              );
+            })}
+          </SkillsWrapper>
+        </UpperSubcardWrapper>
+      </Link>
       <MediaWrapper>
         <ImageSlider imageUrls={props.artPhotos} />
       </MediaWrapper>

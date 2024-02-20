@@ -46,6 +46,7 @@ const FeaturedImageView = ({
           sx={{
             width: { xs: `${avatarSize - 10}px`, md: `${avatarSize}px` },
             height: { xs: `${avatarSize - 10}px`, md: `${avatarSize}px` },
+            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
           }}
         />
         <Typography
