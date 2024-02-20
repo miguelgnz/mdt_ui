@@ -2,6 +2,7 @@ import { StaticImageData } from "next/image";
 import art1 from "@/images/artist2/art1.jpg";
 import art2 from "@/images/artist2/art2.jpg";
 import art3 from "@/images/artist2/art3.jpg";
+import art4 from "@/images/artist2/art4.jpg";
 
 export const menuData = {
   menu: {
@@ -290,7 +291,7 @@ export const featuredSectionData: FeaturedSectionData = {
     ],
   },
   primaryFeaturedImage: {
-    imageSrc: art1,
+    imageSrc: art4,
     avatarSrc: "raynaroc.jpg",
     avatarSize: 60,
     author: "Raynaroc",
