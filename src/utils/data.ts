@@ -142,7 +142,7 @@ export const artistsData = [
     ],
     avatar: "dennis.jpg",
     featuredPhoto: art1,
-    artPhotos: [art1, art2, art3],
+    artPhotos: [art3, art2, art1],
   },
   {
     id: 3,
@@ -169,7 +169,7 @@ export const artistsData = [
     ],
     avatar: "dylan.jpg",
     featuredPhoto: art1,
-    artPhotos: [art1, art2, art3],
+    artPhotos: [art3, art1, art2],
   },
   {
     id: 4,
@@ -196,7 +196,7 @@ export const artistsData = [
     ],
     avatar: "danny.jpg",
     featuredPhoto: art1,
-    artPhotos: [art1, art2, art3],
+    artPhotos: [art2, art1, art3],
   },
   {
     id: 5,
@@ -265,7 +265,7 @@ export const featuredSectionData: FeaturedSectionData = {
         typographyVariant: "body2",
       },
       {
-        imageSrc: art1, 
+        imageSrc: art2, 
         avatarSrc: "dylan.jpg",
         avatarSize: 40,
         author: "Dylan",
@@ -274,7 +274,7 @@ export const featuredSectionData: FeaturedSectionData = {
     ],
     row2: [
       {
-        imageSrc: art1,         
+        imageSrc: art3,         
         avatarSrc: "dennis.jpg",
         avatarSize: 40,
         author: "Dennis",
