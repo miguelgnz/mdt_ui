@@ -1,4 +1,8 @@
 import { StaticImageData } from "next/image";
+
+import { IconType } from "react-icons";
+import { IoLogoInstagram, IoLocationOutline, IoPhonePortraitOutline } from "react-icons/io5";
+
 import art1 from "@/images/artist2/art1.jpg";
 import art2 from "@/images/artist2/art2.jpg";
 import art3 from "@/images/artist2/art3.jpg";
@@ -298,3 +302,27 @@ export const featuredSectionData: FeaturedSectionData = {
     typographyVariant: "body1",
   },
 };
+
+type ContactInfoData = {
+  id: number;
+  label: string;
+  icon: IconType;
+}[]
+
+export const contactInfoData: ContactInfoData = [
+  {
+    id: 1,
+    label: 'Ruta 4. 11-41 edificio Silk Local 103',
+    icon: IoLocationOutline
+  },
+  {
+    id: 2,
+    label: '+502 5716 3988',
+    icon: IoPhonePortraitOutline
+  },
+  {
+    id: 3,
+    label: '@mardetinta',
+    icon: IoLogoInstagram
+  }
+]
