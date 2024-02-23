@@ -61,7 +61,7 @@ const MapContainer = styled("div")(({ theme }) => ({
 const ContactSection = () => {
   const { isLoaded } = useLoadScript({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyDqmSBhcZ6L9oQey2UkbRUv_9tJ92j14Z4",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'DEFAULT_API_KEY',
   });
 
   return (
