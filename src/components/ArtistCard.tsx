@@ -23,6 +23,9 @@ const MainContainer = styled("div")(({ theme }) => ({
   minHeight: "555px",
   borderRadius: "12px",
   background: "#2D2C2C",
+  "& > a": {
+    textDecoration: "none",
+  },
   [theme.breakpoints.down("md")]: {},
 }));
 
