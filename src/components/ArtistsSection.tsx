@@ -39,7 +39,7 @@ const ArtistsSection = () => {
   return (
     <MainContainer>
       <SectionTitleWrapper>
-        <Typography variant="h2" color="primary" textAlign="center">
+        <Typography variant="h4" color="primary" textAlign="center">
           Conoce a Nuestros Artistas
         </Typography>
         <Typography variant="body1" color="primary" textAlign="center">

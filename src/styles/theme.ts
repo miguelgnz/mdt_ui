@@ -81,6 +81,14 @@ const theme = createTheme({
     },
     h2: {
       fontFamily: cinzel.style.fontFamily,
+      fontSize: "48px",
+      fontWeight: 200,
+      "@media (max-width:600px)": {
+        fontSize: "30px",
+      },
+    },
+    h4: {
+      fontFamily: cinzel.style.fontFamily,
       fontSize: "26px",
       fontWeight: 200,
       "@media (max-width:600px)": {

@@ -82,7 +82,7 @@ const FeaturedSection = () => {
   return (
     <MainContainer>
       <SectionTitleWrapper>
-        <Typography variant="h2" color="primary" textAlign="center">
+        <Typography variant="h4" color="primary" textAlign="center">
           Arte Destacado
         </Typography>
       </SectionTitleWrapper>
