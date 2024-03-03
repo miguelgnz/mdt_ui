@@ -15,13 +15,14 @@ export default class MyDocument extends Document {
           />
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <link rel="favicon" href="/favicon.ico" sizes="any" />
-          <link rel="apple-icon" href="/memoji.png" sizes="any" />
+          <link rel="apple-icon" href="/favicon.ico" sizes="any" />
           <meta
             title="Estudio Mar de Tinta"
             name="description"
             content="Tattoo / Body Piercings"
             key="tattoo"
           />
+          <link rel="shortcut icon" href="favicon.ico" />
         </Head>
         <body>
           <Main />
@@ -67,9 +68,8 @@ MyDocument.getInitialProps = async (ctx) => {
   /* eslint-disable */
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App: any) => (props) => (
-        <App emotionCache={cache} {...props} />
-      ),
+      enhanceApp: (App: any) => (props) =>
+        <App emotionCache={cache} {...props} />,
     });
   /* eslint-enable */
 

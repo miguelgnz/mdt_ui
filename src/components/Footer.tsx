@@ -156,7 +156,7 @@ const Footer = () => {
         <FooterColumn>
           <TitleAndLinksWrapper>
             <Typography color="primary" variant="h6">
-              SIGUE NUESTRO TRABAJO
+              SIGUENOS
             </Typography>
             <LinksWrapper sx={{ flexDirection: "row", gap: "6px" }}>
               <Link href={"#"}>
