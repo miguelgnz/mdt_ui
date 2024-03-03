@@ -41,6 +41,7 @@ const ModalInnerContainer = styled("div")(({ theme }) => ({
   transform: "translate(-50%, -50%)",
   backgroundColor: theme.palette.primary.main,
   minWidth: "600px",
+  maxWidth: "800px",
   maxHeight: "calc(100% - 64px)",
   height: "600px",
   display: "flex",

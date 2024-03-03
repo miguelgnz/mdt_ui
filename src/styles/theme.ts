@@ -132,6 +132,15 @@ const theme = createTheme({
         fontSize: "12px",
       },
     },
+    caption: {
+      fontFamily: montserrat.style.fontFamily,
+      fontSize: "12px",
+      fontWeight: 300,
+      letterSpacing: "0.60px",
+      "@media (max-width:600px)": {
+        fontSize: "10px",
+      },
+    },
     button: {
       fontFamily: montserrat.style.fontFamily,
       fontSize: "14px",
