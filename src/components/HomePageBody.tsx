@@ -5,6 +5,7 @@ import ArtistsSection from "@/components/ArtistsSection";
 import AboutSection from "@/components/AboutSection";
 import FeaturedSection from "@/components/FeaturedSection";
 import ContactSection from "@/components/ContactSection";
+import StickyButton from "@/components/StickyButton";
 
 const BodyMainContainer = styled("div")(({ theme }) => ({
   margin: "64px 0 0 0",
@@ -26,6 +27,7 @@ const HomePageBody = () => {
       <HighlightsSection />
       <FeaturedSection />
       <ContactSection />
+      <StickyButton />
     </BodyMainContainer>
   );
 };
