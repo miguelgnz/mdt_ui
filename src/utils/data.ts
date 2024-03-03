@@ -1,12 +1,20 @@
 import { StaticImageData } from "next/image";
 
 import { IconType } from "react-icons";
-import { IoLogoInstagram, IoLocationOutline, IoPhonePortraitOutline } from "react-icons/io5";
+import {
+  IoLogoInstagram,
+  IoLocationOutline,
+  IoPhonePortraitOutline,
+} from "react-icons/io5";
 
 import art1 from "@/images/artist2/art1.jpg";
 import art2 from "@/images/artist2/art2.jpg";
 import art3 from "@/images/artist2/art3.jpg";
 import art4 from "@/images/artist2/art4.jpg";
+
+import Visa from "@/icons/visa.svg";
+import MC from "@/icons/mastercard.svg";
+import Amex from "@/icons/amex.svg";
 
 export const menuData = {
   menu: {
@@ -270,7 +278,7 @@ export const featuredSectionData: FeaturedSectionData = {
         typographyVariant: "body2",
       },
       {
-        imageSrc: art2, 
+        imageSrc: art2,
         avatarSrc: "dylan.jpg",
         avatarSize: 40,
         author: "Dylan",
@@ -279,14 +287,14 @@ export const featuredSectionData: FeaturedSectionData = {
     ],
     row2: [
       {
-        imageSrc: art3,         
+        imageSrc: art3,
         avatarSrc: "dennis.jpg",
         avatarSize: 40,
         author: "Dennis",
         typographyVariant: "body2",
       },
       {
-        imageSrc: art1, 
+        imageSrc: art1,
         avatarSrc: "danny.jpg",
         avatarSize: 40,
         author: "Danny",
@@ -307,22 +315,44 @@ type ContactInfoData = {
   id: number;
   label: string;
   icon: IconType;
-}[]
+}[];
 
 export const contactInfoData: ContactInfoData = [
   {
     id: 1,
-    label: 'Ruta 4. 11-41 edificio Silk Local 103',
-    icon: IoLocationOutline
+    label: "Ruta 4. 11-41 edificio Silk Local 103",
+    icon: IoLocationOutline,
   },
   {
     id: 2,
-    label: '+502 5716 3988',
-    icon: IoPhonePortraitOutline
+    label: "+502 5716 3988",
+    icon: IoPhonePortraitOutline,
   },
   {
     id: 3,
-    label: '@mardetinta',
-    icon: IoLogoInstagram
-  }
-]
+    label: "@mardetinta",
+    icon: IoLogoInstagram,
+  },
+];
+
+type ModalSlide = {
+  title: string;
+  body: string;
+  icons?: any[];
+};
+
+export const modalSlidesdata = [
+  {
+    title: "Cotizar",
+    body: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,<br><br> sunt in culpa qui officia deserunt mollit anim id est laborum. Tellus cras adipiscing enim eu turpis egestas pretium. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis",
+  },
+  {
+    title: "Agendar",
+    body: "Velit laoreet id donec ultrices tincidunt. Euismod lacinia at quis risus sed vulputate odio ut enim. Interdum consectetur.<br><br> Tellus cras adipiscing enim eu turpis egestas pretium. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis<br><br> feugiat vivamus. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt.",
+  },
+  {
+    title: "Metodos de pago",
+    body: "Puedes pagar con tarjeta de crédito/débito. <br><br> Aplica recargo del 10% <br><br> También contamos con visa cuotas, hasta 12 visa cuotas con el 15% de recargo" ,
+    icons: [Visa, MC, Amex],
+  },
+];
