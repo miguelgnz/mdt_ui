@@ -29,6 +29,7 @@ const ContactContentWrapper = styled("div")(({ theme }) => ({
   gap: "18px",
   flexDirection: "row-reverse",
   width: "100%",
+  maxWidth: theme.breakpoints.values.lg,
   height: "500px",
   [theme.breakpoints.down("md")]: {
     height: "1000px",
