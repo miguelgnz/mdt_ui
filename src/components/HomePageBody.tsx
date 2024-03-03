@@ -3,7 +3,9 @@ import HeroSection from "@/components/HeroSection";
 import HighlightsSection from "@/components/HighlightsSection";
 import ArtistsSection from "@/components/ArtistsSection";
 import AboutSection from "@/components/AboutSection";
-import FeaturedSection from "./FeaturedSection";
+import FeaturedSection from "@/components/FeaturedSection";
+import ContactSection from "@/components/ContactSection";
+import StickyButton from "@/components/StickyButton";
 
 const BodyMainContainer = styled("div")(({ theme }) => ({
   margin: "64px 0 0 0",
@@ -19,11 +21,13 @@ const HomePageBody = () => {
     <BodyMainContainer id="body-main-container">
       <HeroSection />
       <ArtistsSection />
-      <Box sx={{ width: "100%", height: '460px' }}>
+      <Box sx={{ width: "100%", height: "460px" }}>
         <AboutSection />
       </Box>
       <HighlightsSection />
       <FeaturedSection />
+      <ContactSection />
+      <StickyButton />
     </BodyMainContainer>
   );
 };

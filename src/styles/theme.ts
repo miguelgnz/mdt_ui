@@ -81,6 +81,14 @@ const theme = createTheme({
     },
     h2: {
       fontFamily: cinzel.style.fontFamily,
+      fontSize: "48px",
+      fontWeight: 200,
+      "@media (max-width:600px)": {
+        fontSize: "30px",
+      },
+    },
+    h4: {
+      fontFamily: cinzel.style.fontFamily,
       fontSize: "26px",
       fontWeight: 200,
       "@media (max-width:600px)": {
@@ -122,6 +130,15 @@ const theme = createTheme({
       letterSpacing: "0.51px",
       "@media (max-width:600px)": {
         fontSize: "12px",
+      },
+    },
+    caption: {
+      fontFamily: montserrat.style.fontFamily,
+      fontSize: "12px",
+      fontWeight: 300,
+      letterSpacing: "0.60px",
+      "@media (max-width:600px)": {
+        fontSize: "10px",
       },
     },
     button: {

@@ -39,7 +39,7 @@ const AboutSection = () => {
         }}
       />
       <SectionContentWrapper>
-        <Typography color="primary" variant="h2">{aboutSectionData.title}</Typography>
+        <Typography color="primary" variant="h4">{aboutSectionData.title}</Typography>
         <Typography color="primary" textAlign="center" variant="body1" fontWeight={400}>
           {aboutSectionData.description}
         </Typography>

@@ -23,6 +23,9 @@ const MainContainer = styled("div")(({ theme }) => ({
   minHeight: "555px",
   borderRadius: "12px",
   background: "#2D2C2C",
+  "& > a": {
+    textDecoration: "none",
+  },
   [theme.breakpoints.down("md")]: {},
 }));
 
@@ -79,7 +82,7 @@ type Skill = {
 const ArtistCard = (props: Props) => {
   return (
     <MainContainer>
-      <Link href={props.instaUrl} target="blank">
+      <Link href={props.instaUrl} rel="noreferrer">
         <UpperSubcardWrapper>
           <Icon
             component={FaInstagram}
