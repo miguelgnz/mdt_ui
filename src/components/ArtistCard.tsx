@@ -82,7 +82,7 @@ type Skill = {
 const ArtistCard = (props: Props) => {
   return (
     <MainContainer>
-      <Link href={props.instaUrl} target="blank">
+      <Link href={props.instaUrl} rel="noreferrer">
         <UpperSubcardWrapper>
           <Icon
             component={FaInstagram}

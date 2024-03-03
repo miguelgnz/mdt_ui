@@ -177,7 +177,13 @@ const Footer = () => {
           textAlign="center"
         >
           Estudio Mar de Tinta 2024. Design & Development:{" "}
-          <Link href={"https://www.miguelgnz.com/"} style={{textDecoration: 'underline', color: 'inherit'}}>Miguel Gnz</Link>
+          <Link
+            href={"https://www.miguelgnz.com/"}
+            rel="noreferrer"
+            style={{ textDecoration: "underline", color: "inherit" }}
+          >
+            Miguel Gnz
+          </Link>
         </Typography>
       </Box>
     </MainContainer>
