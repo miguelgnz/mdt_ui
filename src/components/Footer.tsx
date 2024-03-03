@@ -145,7 +145,7 @@ const Footer = () => {
                 Lunes a viernes: 9:00 a.m - 9:00 p.m
               </Typography>
               <Typography color="primary" variant="body2">
-                Sábado: 10:00 a.m - 8:00 p.m
+                Sábado: 10:00 a.m - 9:00 p.m
               </Typography>
               <Typography color="primary" variant="body2">
                 Domingo: Bajo cita
