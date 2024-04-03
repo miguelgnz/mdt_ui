@@ -69,23 +69,23 @@ type Highlight = {
 export const highlightsData = [
   {
     id: 1,
-    title: "Diseños Personalizados",
+    title: "Escuchamos",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.",
+      "Nos gusta escuchar las ideas que tienes, tu conocimiento en el mundo del tatuaje y saber más de ti y tus gustos.",
     iconSrc: Rose,
   },
   {
     id: 2,
-    title: "Artistas con Experiencia",
+    title: "Interpretamos",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.",
+      "Sabemos que tu tattoo sera para siempre, así que nos tomamos el tiempo y dedicación de interpretar tus ideas de una manera adecuada a la pieza de arte que buscas.",
     iconSrc: Wolf,
   },
   {
     id: 3,
-    title: "Productos Premium",
+    title: "Creamos",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.",
+      "Aquí tu también eres el protagonista, por lo tanto cada una de tus ideas nos aporta para llevar acabo el diseño final.",
     iconSrc: Skull,
   },
 ] as Highlight[];

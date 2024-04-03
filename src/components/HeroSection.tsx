@@ -7,7 +7,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import Image from "next/image";
-import heroImg from "@/images/hero.jpeg";
+import heroImg from "@/images/hero-img.jpg";
 import { heroSectionData } from "@/utils/data";
 import { useState } from "react";
 import AppointmentModal from "@/components/AppointmentModal";
@@ -77,7 +77,7 @@ const HeroSection = () => {
         style={{
           objectFit: "cover",
           borderRadius: "18px",
-          filter: "opacity(0.5)",
+          filter: "opacity(0.9)",
           zIndex: "-1",
           padding: "0 16px",
         }}
