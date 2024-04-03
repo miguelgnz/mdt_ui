@@ -250,9 +250,9 @@ type AboutSection = {
 };
 
 export const aboutSectionData = {
-  title: "Sobre Nosotros",
+  title: "Para Quien es Mar de Tinta",
   description:
-    "Et netus et malesuada fames. Mauris pharetra et ultrices neque ornare aenean. Suscipit tellus mauris a diam maecenas sed enim ut sem. At ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget. Tellus mauris a diam maecenas sed enim ut. In hendrerit gravida rutrum quisque non tellus orci ac auctor. Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper.",
+    "Mar de tinta nace con la intención de llevar el arte del tatuaje a personas que aprecian una bonita pieza de arte en la piel, más alla del tatuaje convencional, nosotros trabajamos para que tu experiencia desde la pieza 0 hasta la ultima sea una aventura distinta y personalizada a tu comodidad y estilo de vida.",
 } as AboutSection;
 
 export interface FeaturedImageData {
