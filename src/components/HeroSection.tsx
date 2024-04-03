@@ -1,6 +1,5 @@
 import {
   Button,
-  Box,
   Typography,
   styled,
   Modal,
@@ -29,6 +28,13 @@ const HeroContent = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "38px",
+  [theme.breakpoints.down("md")]: {},
+}));
+
+const TitlesWrapper = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
   [theme.breakpoints.down("md")]: {},
 }));
 
@@ -77,20 +83,24 @@ const HeroSection = () => {
         }}
       />
       <HeroContent>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+        <Image
+          alt="logo"
+          src={"/mdt-logo.png"}
+          width={mobileView ? 80 : 120}
+          height={mobileView ? 80 : 120}
+          style={{
+            display: "block",
+            filter: "drop-shadow(2px 4px 4px black)",
           }}
-        >
+        />
+        <TitlesWrapper>
           <Typography variant="h1" color={"primary"}>
             {heroSectionData.title}
           </Typography>
           <Typography variant="h4" color={"primary"}>
             {heroSectionData.subtitle}
           </Typography>
-        </Box>
+        </TitlesWrapper>
         <Button variant="outlined" onClick={handleOpen}>
           {heroSectionData.actionButton}
         </Button>
@@ -113,7 +123,7 @@ const HeroSection = () => {
           <AppointmentModal />
           <Image
             alt="logo"
-            src={"/mdt-logo.png"}
+            src={"/mdt-logo.svg"}
             width={mobileView ? 50 : 70}
             height={mobileView ? 50 : 70}
             style={{
@@ -122,7 +132,7 @@ const HeroSection = () => {
               left: "16px",
               bottom: "16px",
               zIndex: "-1",
-              filter: 'drop-shadow(2px 4px 4px grey)'
+              filter: "drop-shadow(2px 4px 4px grey)",
             }}
           />
         </ModalInnerContainer>

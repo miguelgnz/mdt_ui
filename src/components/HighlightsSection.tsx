@@ -1,7 +1,6 @@
 import { Box, Typography, styled, Icon } from "@mui/material";
 import { highlightsData } from "@/utils/data";
 import Image from "next/image";
-import Wolf from "@/icons/Wolf";
 
 const MainContainer = styled("div")(({ theme }) => ({
   display: "flex",
@@ -23,7 +22,6 @@ const HighlightWrapper = styled("div")(({ theme }) => ({
   gap: "8px",
   [theme.breakpoints.down("md")]: {
     width: "100%",
-
   },
 }));
 
@@ -45,7 +43,6 @@ const HighlightsSection = () => {
           </HighlightWrapper>
         );
       })}
-      
     </MainContainer>
   );
 };

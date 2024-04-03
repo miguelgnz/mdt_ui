@@ -16,6 +16,10 @@ import Visa from "@/icons/visa.svg";
 import MC from "@/icons/mastercard.svg";
 import Amex from "@/icons/amex.svg";
 
+import Wolf from "@/icons/wolf.svg";
+import Rose from "@/icons/rose.svg";
+import Skull from "@/icons/skull.svg";
+
 export const menuData = {
   menu: {
     items: [
@@ -68,21 +72,21 @@ export const highlightsData = [
     title: "Diseños Personalizados",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.",
-    iconSrc: "./rose.svg",
+    iconSrc: Rose,
   },
   {
     id: 2,
     title: "Artistas con Experiencia",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.",
-    iconSrc: "./wolf.svg",
+    iconSrc: Wolf,
   },
   {
     id: 3,
     title: "Productos Premium",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.",
-    iconSrc: "./skull.svg",
+    iconSrc: Skull,
   },
 ] as Highlight[];
 
@@ -352,7 +356,7 @@ export const modalSlidesdata = [
   },
   {
     title: "Metodos de pago",
-    body: "Puedes pagar con tarjeta de crédito/débito. <br><br> Aplica recargo del 10% <br><br> También contamos con visa cuotas, hasta 12 visa cuotas con el 15% de recargo" ,
+    body: "Puedes pagar con tarjeta de crédito/débito. <br><br> Aplica recargo del 10% <br><br> También contamos con visa cuotas, hasta 12 visa cuotas con el 15% de recargo",
     icons: [Visa, MC, Amex],
   },
 ];
