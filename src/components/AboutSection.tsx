@@ -1,12 +1,12 @@
 import { Typography, styled } from "@mui/material";
 import { aboutSectionData } from "@/utils/data";
 import Image from "next/image";
-import AboutSectionBackground from "../../public/about-section.jpg"
+import AboutSectionBackground from "@/images/about-section.jpg";
 
 const MainContainer = styled("div")(({ theme }) => ({
   position: "absolute",
-  display: 'flex',
-  justifyContent: 'center',
+  display: "flex",
+  justifyContent: "center",
   width: "100%",
   height: "460px",
   [theme.breakpoints.down("md")]: {},
@@ -15,12 +15,12 @@ const MainContainer = styled("div")(({ theme }) => ({
 const SectionContentWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  width: '45%',
-  alignItems: 'center',
-  gap: '48px',
-  justifyContent: 'center',
+  width: "45%",
+  alignItems: "center",
+  gap: "48px",
+  justifyContent: "center",
   [theme.breakpoints.down("md")]: {
-      width: '90%',
+    width: "90%",
   },
 }));
 
@@ -29,7 +29,7 @@ const AboutSection = () => {
     <MainContainer>
       <Image
         src={AboutSectionBackground}
-        alt={'about'}
+        alt={"about"}
         fill
         style={{
           objectFit: "cover",
@@ -39,8 +39,15 @@ const AboutSection = () => {
         }}
       />
       <SectionContentWrapper>
-        <Typography color="primary" variant="h4">{aboutSectionData.title}</Typography>
-        <Typography color="primary" textAlign="center" variant="body1" fontWeight={400}>
+        <Typography color="primary" variant="h4">
+          {aboutSectionData.title}
+        </Typography>
+        <Typography
+          color="primary"
+          textAlign="center"
+          variant="body1"
+          fontWeight={400}
+        >
           {aboutSectionData.description}
         </Typography>
       </SectionContentWrapper>

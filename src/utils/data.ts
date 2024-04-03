@@ -16,6 +16,10 @@ import Visa from "@/icons/visa.svg";
 import MC from "@/icons/mastercard.svg";
 import Amex from "@/icons/amex.svg";
 
+import Wolf from "@/icons/wolf.svg";
+import Rose from "@/icons/rose.svg";
+import Skull from "@/icons/skull.svg";
+
 export const menuData = {
   menu: {
     items: [
@@ -65,24 +69,24 @@ type Highlight = {
 export const highlightsData = [
   {
     id: 1,
-    title: "Diseños Personalizados",
+    title: "Escuchamos",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.",
-    iconSrc: "./rose.svg",
+      "Nos gusta escuchar las ideas que tienes, tu conocimiento en el mundo del tatuaje y saber más de ti y tus gustos.",
+    iconSrc: Rose,
   },
   {
     id: 2,
-    title: "Artistas con Experiencia",
+    title: "Interpretamos",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.",
-    iconSrc: "./wolf.svg",
+      "Sabemos que tu tattoo sera para siempre, así que nos tomamos el tiempo y dedicación de interpretar tus ideas de una manera adecuada a la pieza de arte que buscas.",
+    iconSrc: Wolf,
   },
   {
     id: 3,
-    title: "Productos Premium",
+    title: "Creamos",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna aliqua.",
-    iconSrc: "./skull.svg",
+      "Aquí tu también eres el protagonista, por lo tanto cada una de tus ideas nos aporta para llevar acabo el diseño final.",
+    iconSrc: Skull,
   },
 ] as Highlight[];
 
@@ -246,9 +250,9 @@ type AboutSection = {
 };
 
 export const aboutSectionData = {
-  title: "Sobre Nosotros",
+  title: "Para Quien es Mar de Tinta",
   description:
-    "Et netus et malesuada fames. Mauris pharetra et ultrices neque ornare aenean. Suscipit tellus mauris a diam maecenas sed enim ut sem. At ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget. Tellus mauris a diam maecenas sed enim ut. In hendrerit gravida rutrum quisque non tellus orci ac auctor. Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper.",
+    "Mar de tinta nace con la intención de llevar el arte del tatuaje a personas que aprecian una bonita pieza de arte en la piel, más alla del tatuaje convencional, nosotros trabajamos para que tu experiencia desde la pieza 0 hasta la ultima sea una aventura distinta y personalizada a tu comodidad y estilo de vida.",
 } as AboutSection;
 
 export interface FeaturedImageData {
@@ -352,7 +356,7 @@ export const modalSlidesdata = [
   },
   {
     title: "Metodos de pago",
-    body: "Puedes pagar con tarjeta de crédito/débito. <br><br> Aplica recargo del 10% <br><br> También contamos con visa cuotas, hasta 12 visa cuotas con el 15% de recargo" ,
+    body: "Puedes pagar con tarjeta de crédito/débito. <br><br> Aplica recargo del 10% <br><br> También contamos con visa cuotas, hasta 12 visa cuotas con el 15% de recargo",
     icons: [Visa, MC, Amex],
   },
 ];
