@@ -17,7 +17,7 @@ const MainContainer = styled("div")(({ theme }) => ({
   position: "relative",
   height: "600px",
   [theme.breakpoints.down("md")]: {
-    height: "480px",
+    height: "320px",
   },
 }));
 
@@ -77,7 +77,7 @@ const HeroSection = () => {
         style={{
           objectFit: "cover",
           borderRadius: "18px",
-          filter: "opacity(0.9)",
+          filter: "opacity(0.7)",
           zIndex: "-1",
           padding: "0 16px",
         }}

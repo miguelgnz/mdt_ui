@@ -16,14 +16,22 @@ const BodyMainContainer = styled("div")(({ theme }) => ({
   [theme.breakpoints.down("md")]: {},
 }));
 
+const AboutOutterContainer = styled("div")(({ theme }) => ({
+  width: "100%",
+  height: "600px",
+  [theme.breakpoints.down("md")]: {
+    height: "320px",
+  },
+}));
+
 const HomePageBody = () => {
   return (
     <BodyMainContainer id="body-main-container">
       <HeroSection />
       <ArtistsSection />
-      <Box sx={{ width: "100%", height: "460px" }}>
+      <AboutOutterContainer>
         <AboutSection />
-      </Box>
+      </AboutOutterContainer>
       <HighlightsSection />
       <FeaturedSection />
       <ContactSection />
