@@ -125,10 +125,6 @@ export const artistsData = [
         id: 3,
         name: "Realismo",
       },
-      {
-        id: 4,
-        name: "TestDev",
-      },
     ],
     avatar: "raynaroc.jpg",
     featuredPhoto: art1,
@@ -151,10 +147,6 @@ export const artistsData = [
       {
         id: 3,
         name: "Realismo",
-      },
-      {
-        id: 4,
-        name: "TestDev",
       },
     ],
     avatar: "dennis.jpg",
@@ -179,10 +171,6 @@ export const artistsData = [
         id: 3,
         name: "Realismo",
       },
-      {
-        id: 4,
-        name: "TestDev",
-      },
     ],
     avatar: "dylan.jpg",
     featuredPhoto: art1,
@@ -206,10 +194,6 @@ export const artistsData = [
         id: 3,
         name: "Realismo",
       },
-      {
-        id: 4,
-        name: "TestDev",
-      },
     ],
     avatar: "danny.jpg",
     featuredPhoto: art1,
@@ -232,10 +216,6 @@ export const artistsData = [
       {
         id: 3,
         name: "Realismo",
-      },
-      {
-        id: 4,
-        name: "TestDev",
       },
     ],
     avatar: "nicole.jpg",
