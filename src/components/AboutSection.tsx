@@ -8,8 +8,10 @@ const MainContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   width: "100%",
-  height: "460px",
-  [theme.breakpoints.down("md")]: {},
+  height: "600px",
+  [theme.breakpoints.down("md")]: {
+    height: "320px",
+  },
 }));
 
 const SectionContentWrapper = styled("div")(({ theme }) => ({
@@ -20,6 +22,7 @@ const SectionContentWrapper = styled("div")(({ theme }) => ({
   gap: "48px",
   justifyContent: "center",
   [theme.breakpoints.down("md")]: {
+    gap: "24px",
     width: "90%",
   },
 }));

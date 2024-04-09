@@ -125,10 +125,6 @@ export const artistsData = [
         id: 3,
         name: "Realismo",
       },
-      {
-        id: 4,
-        name: "TestDev",
-      },
     ],
     avatar: "raynaroc.jpg",
     featuredPhoto: art1,
@@ -137,7 +133,7 @@ export const artistsData = [
   {
     id: 2,
     name: "Dennis",
-    instaUrl: "https://www.instagram.com/miguel_gnz/",
+    instaUrl: "https://www.instagram.com/raynaroc/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
@@ -151,10 +147,6 @@ export const artistsData = [
       {
         id: 3,
         name: "Realismo",
-      },
-      {
-        id: 4,
-        name: "TestDev",
       },
     ],
     avatar: "dennis.jpg",
@@ -164,7 +156,7 @@ export const artistsData = [
   {
     id: 3,
     name: "Dylan",
-    instaUrl: "https://www.instagram.com/miguel_gnz/",
+    instaUrl: "https://www.instagram.com/raynaroc/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
@@ -178,10 +170,6 @@ export const artistsData = [
       {
         id: 3,
         name: "Realismo",
-      },
-      {
-        id: 4,
-        name: "TestDev",
       },
     ],
     avatar: "dylan.jpg",
@@ -191,7 +179,7 @@ export const artistsData = [
   {
     id: 4,
     name: "Danny",
-    instaUrl: "https://www.instagram.com/miguel_gnz/",
+    instaUrl: "https://www.instagram.com/raynaroc/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
@@ -205,10 +193,6 @@ export const artistsData = [
       {
         id: 3,
         name: "Realismo",
-      },
-      {
-        id: 4,
-        name: "TestDev",
       },
     ],
     avatar: "danny.jpg",
@@ -218,7 +202,7 @@ export const artistsData = [
   {
     id: 5,
     name: "Nicole",
-    instaUrl: "https://www.instagram.com/miguel_gnz/",
+    instaUrl: "https://www.instagram.com/raynaroc/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
@@ -232,10 +216,6 @@ export const artistsData = [
       {
         id: 3,
         name: "Realismo",
-      },
-      {
-        id: 4,
-        name: "TestDev",
       },
     ],
     avatar: "nicole.jpg",
