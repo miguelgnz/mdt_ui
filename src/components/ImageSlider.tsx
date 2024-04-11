@@ -17,6 +17,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   bottom: "0",
   padding: "12px",
   cursor: "pointer",
+  borderRadius: '0',
   "&:hover": {
     backgroundColor: "rgb(0, 0, 0, 0.2)",
   },
