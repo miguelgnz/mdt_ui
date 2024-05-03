@@ -40,7 +40,7 @@ const ContactContentWrapper = styled("div")(({ theme }) => ({
 const InfoContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  justifyContent: 'space-evenly',
+  justifyContent: "space-evenly",
   width: "50%",
   height: "100%",
   gap: "18px",
@@ -62,18 +62,18 @@ const MapContainer = styled("div")(({ theme }) => ({
 const ContactSection = () => {
   const { isLoaded } = useLoadScript({
     id: "google-map-script",
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'DEFAULT_API_KEY',
+    googleMapsApiKey:
+      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "DEFAULT_API_KEY",
   });
 
   return (
-    <MainContainer>
+    <MainContainer id="contact">
       <SectionTitleWrapper>
         <Typography variant="h4" color="primary" textAlign="center">
           Contacto
         </Typography>
         <Typography variant="body1" color="primary" textAlign="center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          minim veniam
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. minim veniam
         </Typography>
       </SectionTitleWrapper>
       <ContactContentWrapper>

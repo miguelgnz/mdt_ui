@@ -82,6 +82,7 @@ const AppointmentModal = () => {
           display: "flex",
           flexDirection: "column",
           gap: "64px",
+          width: "84%"
         }}
       >
         <Typography
@@ -100,6 +101,7 @@ const AppointmentModal = () => {
             __html: sanitizeHtlm(modalSlidesdata[slideIndex].body, sanitizeHtmlOptions),
           }}
         />
+        {/* Visa, MC, AMEX logos */}
         {modalSlidesdata[slideIndex].icons && (
           <SlideIconsWrapper id="icons-box">
             {modalSlidesdata[slideIndex].icons?.map((icon, index) => {

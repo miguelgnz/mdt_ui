@@ -20,7 +20,7 @@ const MainContainer = styled("div")(({ theme }) => ({
   flexDirection: "column",
   width: "340px",
   height: "auto",
-  minHeight: "555px",
+  minHeight: "545px",
   borderRadius: "12px",
   background: "#2D2C2C",
   "& > a": {

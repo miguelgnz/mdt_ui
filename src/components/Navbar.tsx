@@ -8,12 +8,14 @@ import {
   Menu,
   MenuItem,
   Divider,
+  Button,
 } from "@mui/material";
 import { FiMenu } from "react-icons/fi";
 import Link from "next/link";
 import { menuData } from "@/utils/data";
 import { useState } from "react";
 import Image from "next/image";
+import { navigateHomePage } from "@/utils/navigateHomePage";
 
 const StyledAppbar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -25,36 +27,26 @@ const StyledAppbar = styled(AppBar)(({ theme }) => ({
 const LinksWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: "24px",
+  gap: "12px",
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
 }));
 
-const StyledLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  color: "#FFF",
-  "& > p": {
-    fontSize: "4px",
-  },
-  "& :hover": {
-    color: theme.palette.primary.main,
-  },
-  [theme.breakpoints.down("sm")]: {},
-}));
-
 const StyledMenu = styled(Menu)(({ theme }) => ({
   "& .MuiPaper-root": {
-    // backgroundColor: theme.palette.background.default,
-    // border: '1px solid dimgrey'
-    borderRadius: '14px'
+    borderRadius: "14px",
   },
 }));
 
-const StyledMenuLink = styled(Link)(({ theme }) => ({
+const StyledMenuLink = styled(Typography)(({ theme }) => ({
   textDecoration: "none",
   color: "#02121F",
-  "& > p": {},
+}));
+
+const StyledMenuBtn = styled(Button)(({ theme }) => ({
+  ...theme.typography.h6,
+  fontWeight: 400,
 }));
 
 const Navbar = () => {
@@ -75,7 +67,9 @@ const Navbar = () => {
     <StyledAppbar position="fixed">
       <Toolbar>
         <IconButton
-          href="#home"
+          onClick={() => {
+            navigateHomePage("home");
+          }}
           size="large"
           edge="start"
           sx={{ color: "#f0f0f0" }}
@@ -108,11 +102,10 @@ const Navbar = () => {
               return (
                 <StyledMenuLink
                   onClick={() => {
-                    setAnchorEl(null);
+                    navigateHomePage(item.url);
                     setIsMenuOpen(false);
                   }}
                   key={item.id}
-                  href={item.url}
                 >
                   <MenuItem>
                     <Typography>{item.text}</Typography>
@@ -126,11 +119,15 @@ const Navbar = () => {
         <LinksWrapper>
           {menuData.menu.items.map((item) => {
             return (
-              <StyledLink key={item.id} href={item.url}>
-                <MenuItem>
-                  <Typography variant="h5" fontWeight={400} letterSpacing={1.5}>{item.text}</Typography>
-                </MenuItem>
-              </StyledLink>
+              <MenuItem key={item.id}>
+                <StyledMenuBtn
+                  onClick={() => {
+                    navigateHomePage(item.url);
+                  }}
+                >
+                  {item.text}
+                </StyledMenuBtn>
+              </MenuItem>
             );
           })}
         </LinksWrapper>

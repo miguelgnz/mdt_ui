@@ -26,8 +26,8 @@ const CardsContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   gap: "64px",
-  flexWrap: 'wrap',
-  justifyContent: 'center',
+  flexWrap: "wrap",
+  justifyContent: "center",
   maxWidth: theme.breakpoints.values.md,
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
@@ -37,7 +37,7 @@ const CardsContainer = styled("div")(({ theme }) => ({
 
 const ArtistsSection = () => {
   return (
-    <MainContainer>
+    <MainContainer id="artists">
       <SectionTitleWrapper>
         <Typography variant="h4" color="primary" textAlign="center">
           Conoce a Nuestros Artistas
