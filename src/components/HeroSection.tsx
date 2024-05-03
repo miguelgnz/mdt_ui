@@ -52,6 +52,7 @@ const ModalInnerContainer = styled("div")(({ theme }) => ({
   height: "600px",
   display: "flex",
   flexDirection: "column",
+  alignItems: "center",
   gap: "24px",
   [theme.breakpoints.down("md")]: {
     minWidth: "320px",
@@ -123,16 +124,16 @@ const HeroSection = () => {
           <AppointmentModal />
           <Image
             alt="logo"
-            src={"/mdt-logo.svg"}
-            width={mobileView ? 50 : 70}
-            height={mobileView ? 50 : 70}
+            src={"/mdt-logo.png"}
+            width={mobileView ? 70 : 90}
+            height={mobileView ? 70 : 90}
             style={{
               position: "absolute",
               display: "block",
-              left: "16px",
+              left: "42%",
               bottom: "16px",
               zIndex: "-1",
-              filter: "drop-shadow(2px 4px 4px grey)",
+              opacity: 0.4
             }}
           />
         </ModalInnerContainer>
