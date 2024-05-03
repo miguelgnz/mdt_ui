@@ -80,7 +80,7 @@ const FeaturedSection = () => {
   const { secondaryFeaturedImages, primaryFeaturedImage } = featuredSectionData;
 
   return (
-    <MainContainer>
+    <MainContainer id="art">
       <SectionTitleWrapper>
         <Typography variant="h4" color="primary" textAlign="center">
           Arte Destacado

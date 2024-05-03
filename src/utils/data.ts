@@ -26,22 +26,22 @@ export const menuData = {
       {
         id: 1,
         text: "Artistas",
-        url: "#artistas",
+        url: "artists",
       },
       {
         id: 2,
         text: "Sobre Nosotros",
-        url: "#nosotros",
+        url: "about",
       },
       {
         id: 3,
         text: "Arte",
-        url: "#arte",
+        url: "art",
       },
       {
         id: 4,
         text: "Contacto",
-        url: "#contacto",
+        url: "contact",
       },
     ],
   },

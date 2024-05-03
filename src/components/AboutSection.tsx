@@ -29,7 +29,7 @@ const SectionContentWrapper = styled("div")(({ theme }) => ({
 
 const AboutSection = () => {
   return (
-    <MainContainer>
+    <MainContainer id="about">
       <Image
         src={AboutSectionBackground}
         alt={"about"}

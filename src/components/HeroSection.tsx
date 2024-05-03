@@ -69,7 +69,7 @@ const HeroSection = () => {
   const mobileView = useMediaQuery("(max-width: 840px)");
 
   return (
-    <MainContainer>
+    <MainContainer id="home">
       <Image
         src={heroImg}
         alt="heroImg"
