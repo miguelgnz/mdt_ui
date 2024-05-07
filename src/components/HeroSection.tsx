@@ -12,6 +12,9 @@ import { heroSectionData } from "@/utils/data";
 import { useState } from "react";
 import AppointmentModal from "@/components/AppointmentModal";
 import { IoMdClose } from "react-icons/io";
+import OnEnterAnimation from "@/animations/Hero/OnEnterAnimation";
+import TitleAnimation from "@/animations/Hero/TitleAnimation";
+import SubtitleAnimation from "@/animations/Hero/SubtitleAnimation";
 
 const MainContainer = styled("div")(({ theme }) => ({
   position: "relative",
@@ -84,22 +87,24 @@ const HeroSection = () => {
         }}
       />
       <HeroContent>
-        <Image
-          alt="logo"
-          src={"/mdt-logo.png"}
-          width={mobileView ? 80 : 120}
-          height={mobileView ? 80 : 120}
-          style={{
-            display: "block",
-            filter: "drop-shadow(2px 4px 4px black)",
-          }}
-        />
+        <OnEnterAnimation>
+          <Image
+            alt="logo"
+            src={"/mdt-logo.png"}
+            width={mobileView ? 80 : 120}
+            height={mobileView ? 80 : 120}
+            style={{
+              display: "block",
+              filter: "drop-shadow(2px 4px 4px black)",
+            }}
+          />
+        </OnEnterAnimation>
         <TitlesWrapper>
           <Typography variant="h1" color={"primary"}>
-            {heroSectionData.title}
+            <TitleAnimation>{heroSectionData.title}</TitleAnimation>
           </Typography>
           <Typography variant="h4" color={"primary"}>
-            {heroSectionData.subtitle}
+            <SubtitleAnimation>{heroSectionData.subtitle}</SubtitleAnimation>
           </Typography>
         </TitlesWrapper>
         <Button variant="outlined" onClick={handleOpen}>
@@ -133,7 +138,7 @@ const HeroSection = () => {
               left: "42%",
               bottom: "16px",
               zIndex: "-1",
-              opacity: 0.4
+              opacity: 0.4,
             }}
           />
         </ModalInnerContainer>
