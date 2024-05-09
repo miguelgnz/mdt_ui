@@ -1,6 +1,7 @@
 import { Typography, styled } from "@mui/material";
 import { artistsData } from "@/utils/data";
 import ArtistCard from "@/components/ArtistCard";
+import CardAnimation from "@/animations/CardAnimation";
 
 const MainContainer = styled("div")(({ theme }) => ({
   display: "flex",
@@ -51,17 +52,21 @@ const ArtistsSection = () => {
       <CardsContainer>
         {artistsData.map((artist) => {
           return (
-            <ArtistCard
-              key={artist.id}
-              id={artist.id}
-              name={artist.name}
-              instaUrl={artist.instaUrl}
-              bio={artist.bio}
-              skills={artist.skills}
-              avatar={artist.avatar}
-              featuredPhoto={artist.featuredPhoto}
-              artPhotos={artist.artPhotos}
-            />
+            <>
+              <CardAnimation>
+                <ArtistCard
+                  key={artist.id}
+                  id={artist.id}
+                  name={artist.name}
+                  instaUrl={artist.instaUrl}
+                  bio={artist.bio}
+                  skills={artist.skills}
+                  avatar={artist.avatar}
+                  featuredPhoto={artist.featuredPhoto}
+                  artPhotos={artist.artPhotos}
+                />
+              </CardAnimation>
+            </>
           );
         })}
       </CardsContainer>

@@ -20,7 +20,6 @@ const MainContainer = styled("div")(({ theme }) => ({
   flexDirection: "column",
   width: "340px",
   height: "auto",
-  minHeight: "545px",
   borderRadius: "12px",
   background: "#2D2C2C",
   "& > a": {
@@ -51,9 +50,8 @@ const SkillsWrapper = styled("div")(({ theme }) => ({
   flexDirection: "row",
   flexWrap: "wrap",
   justifyContent: "center",
-  margin: "8px 0",
+  margin: "24px 0",
   gap: "6px",
-  minHeight: "64px",
   [theme.breakpoints.down("md")]: {},
 }));
 
@@ -102,11 +100,6 @@ const ArtistCard = (props: Props) => {
               {props.name}
             </Typography>
           </AvatarWrapper>
-          <BioWrapper>
-            <Typography color="primary" textAlign="center" variant="body2">
-              {props.bio}
-            </Typography>
-          </BioWrapper>
           <SkillsWrapper>
             {props.skills.map((skill, index) => {
               return (

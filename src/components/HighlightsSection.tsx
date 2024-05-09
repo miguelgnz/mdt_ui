@@ -1,8 +1,9 @@
 import { Box, Typography, styled, Icon } from "@mui/material";
 import { highlightsData } from "@/utils/data";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
-const MainContainer = styled("div")(({ theme }) => ({
+const MainContainer = styled(motion.div)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   gap: "64px",
@@ -14,7 +15,7 @@ const MainContainer = styled("div")(({ theme }) => ({
   },
 }));
 
-const HighlightWrapper = styled("div")(({ theme }) => ({
+const HighlightWrapper = styled(motion.div)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   width: "25%",
@@ -26,11 +27,36 @@ const HighlightWrapper = styled("div")(({ theme }) => ({
 }));
 
 const HighlightsSection = () => {
+  // *Animation
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+  
+  // *Animation
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
   return (
-    <MainContainer>
+    <MainContainer
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+    >
       {highlightsData.map((e, index) => {
         return (
-          <HighlightWrapper key={index}>
+          <HighlightWrapper key={index} variants={item}>
             <Box>
               <Image src={e.iconSrc} alt="logo" width={100} height={100} />
             </Box>
