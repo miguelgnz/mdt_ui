@@ -70,11 +70,11 @@ const ContactSection = () => {
     <MainContainer id="contact">
       <SectionTitleWrapper>
         <Typography variant="h4" color="primary" textAlign="center">
-          Contacto
+          Ubicación / Contacto
         </Typography>
-        <Typography variant="body1" color="primary" textAlign="center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. minim veniam
-        </Typography>
+        {/* <Typography variant="body1" color="primary" textAlign="center">
+          Ubicación y contacto
+        </Typography> */}
       </SectionTitleWrapper>
       <ContactContentWrapper>
         <MapContainer>{isLoaded ? <BusinessLocationMap /> : null}</MapContainer>

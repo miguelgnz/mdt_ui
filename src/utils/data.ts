@@ -40,7 +40,7 @@ export const menuData = {
       },
       {
         id: 4,
-        text: "Contacto",
+        text: "Ubicación",
         url: "contact",
       },
     ],
@@ -109,7 +109,7 @@ type Artist = {
 export const artistsData = [
   {
     id: 1,
-    name: "Raynaroc",
+    name: "Jaen Cuellar",
     instaUrl: "https://www.instagram.com/raynaroc",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
@@ -132,8 +132,8 @@ export const artistsData = [
   },
   {
     id: 2,
-    name: "Dennis",
-    instaUrl: "https://www.instagram.com/raynaroc/",
+    name: "Andy Garay",
+    instaUrl: "https://www.instagram.com/andy_garay_/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
@@ -149,14 +149,14 @@ export const artistsData = [
         name: "Realismo",
       },
     ],
-    avatar: "dennis.jpg",
+    avatar: "andy.jpg",
     featuredPhoto: art1,
     artPhotos: [art3, art2, art1],
   },
   {
     id: 3,
     name: "Dylan",
-    instaUrl: "https://www.instagram.com/raynaroc/",
+    instaUrl: "https://www.instagram.com/dyland.tattooer/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
@@ -179,7 +179,7 @@ export const artistsData = [
   {
     id: 4,
     name: "Danny",
-    instaUrl: "https://www.instagram.com/raynaroc/",
+    instaUrl: "https://www.instagram.com/danny_inferno_/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
@@ -202,7 +202,7 @@ export const artistsData = [
   {
     id: 5,
     name: "Nicole",
-    instaUrl: "https://www.instagram.com/raynaroc/",
+    instaUrl: "https://www.instagram.com/jossnicoletattoo/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
@@ -221,6 +221,52 @@ export const artistsData = [
     avatar: "nicole.jpg",
     featuredPhoto: art1,
     artPhotos: [art1, art2, art3],
+  },
+  {
+    id: 6,
+    name: "Cristy Calderón",
+    instaUrl: "https://www.instagram.com/criss_calderonn/",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
+    skills: [
+      {
+        id: 1,
+        name: "Fine Line",
+      },
+      {
+        id: 2,
+        name: "Black & Grey",
+      },
+      {
+        id: 3,
+        name: "Realismo",
+      },
+    ],
+    avatar: "cristy.jpg",
+    featuredPhoto: art1,
+    artPhotos: [art2, art1, art3],
+  },
+  {
+    id: 7,
+    name: "Adaly Castrillo",
+    instaUrl: "https://www.instagram.com/adalia_tattoo/",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
+    skills: [
+      {
+        id: 1,
+        name: "Fine Line",
+      },
+      {
+        id: 2,
+        name: "Black & Grey",
+      },
+      {
+        id: 3,
+        name: "Realismo",
+      },
+    ],
+    avatar: "adaly.jpg",
+    featuredPhoto: art1,
+    artPhotos: [art3, art2, art1],
   },
 ] as Artist[];
 
@@ -272,9 +318,9 @@ export const featuredSectionData: FeaturedSectionData = {
     row2: [
       {
         imageSrc: art3,
-        avatarSrc: "dennis.jpg",
+        avatarSrc: "andy.jpg",
         avatarSize: 40,
-        author: "Dennis",
+        author: "Andy Garay",
         typographyVariant: "body2",
       },
       {
@@ -304,17 +350,18 @@ type ContactInfoData = {
 export const contactInfoData: ContactInfoData = [
   {
     id: 1,
-    label: "Ruta 4. 11-41 edificio Silk Local 103",
+    label:
+      "Vía 6 02-71 Ruta 3 Edificio Silk local 103 y 102 Zona 4, Ciudad de Guatemala",
     icon: IoLocationOutline,
   },
   {
     id: 2,
-    label: "+502 5716 3988",
+    label: "+502 3136 6446",
     icon: IoPhonePortraitOutline,
   },
   {
     id: 3,
-    label: "@mardetinta",
+    label: "@estudio_mardetinta",
     icon: IoLogoInstagram,
   },
 ];

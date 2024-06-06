@@ -1,4 +1,4 @@
-import { Typography, styled } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 import { artistsData } from "@/utils/data";
 import ArtistCard from "@/components/ArtistCard";
 import CardAnimation from "@/animations/CardAnimation";
@@ -44,18 +44,18 @@ const ArtistsSection = () => {
           Conoce a Nuestros Artistas
         </Typography>
         <Typography variant="body1" color="primary" textAlign="center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam
+          Nuestros artistas están comprometidos en traerte propuestas nuevas en
+          el mundo del tatuaje, un mundo lleno de arte y dedicación a lo que
+          hacemos en nuestros día a día, Desempeñando nuevas tendencias y
+          adaptandonos a las nuevas tecnologías que este hermoso arte trae
         </Typography>
       </SectionTitleWrapper>
       <CardsContainer>
-        {artistsData.map((artist) => {
+        {artistsData.map((artist, index) => {
           return (
-            <>
+            <Box key={index}>
               <CardAnimation>
                 <ArtistCard
-                  key={artist.id}
                   id={artist.id}
                   name={artist.name}
                   instaUrl={artist.instaUrl}
@@ -66,7 +66,7 @@ const ArtistsSection = () => {
                   artPhotos={artist.artPhotos}
                 />
               </CardAnimation>
-            </>
+            </Box>
           );
         })}
       </CardsContainer>
