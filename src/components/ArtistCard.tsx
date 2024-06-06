@@ -99,7 +99,12 @@ const ArtistCard = (props: Props) => {
   return (
     <MainContainer>
       <UpperSubcardWrapper>
-        <Button startIcon={<FaInstagram />} size="small" href={props.instaUrl}>
+        <Button
+          startIcon={<FaInstagram />}
+          size="small"
+          href={props.instaUrl}
+          target="_blank"
+        >
           {`@${extractUsernameFromUrl(props.instaUrl)}`}
         </Button>
         {/* <Link href={props.instaUrl} rel="noreferrer"> */}
