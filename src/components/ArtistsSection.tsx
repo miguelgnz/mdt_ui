@@ -1,4 +1,4 @@
-import { Typography, styled } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 import { artistsData } from "@/utils/data";
 import ArtistCard from "@/components/ArtistCard";
 import CardAnimation from "@/animations/CardAnimation";
@@ -51,12 +51,11 @@ const ArtistsSection = () => {
         </Typography>
       </SectionTitleWrapper>
       <CardsContainer>
-        {artistsData.map((artist) => {
+        {artistsData.map((artist, index) => {
           return (
-            <>
+            <Box key={index}>
               <CardAnimation>
                 <ArtistCard
-                  key={artist.id}
                   id={artist.id}
                   name={artist.name}
                   instaUrl={artist.instaUrl}
@@ -67,7 +66,7 @@ const ArtistsSection = () => {
                   artPhotos={artist.artPhotos}
                 />
               </CardAnimation>
-            </>
+            </Box>
           );
         })}
       </CardsContainer>

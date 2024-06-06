@@ -225,7 +225,7 @@ export const artistsData = [
   {
     id: 6,
     name: "Cristy Calderón",
-    instaUrl: "https://www.instagram.com/jossnicoletattoo/",
+    instaUrl: "https://www.instagram.com/criss_calderonn/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {
@@ -248,7 +248,7 @@ export const artistsData = [
   {
     id: 7,
     name: "Adaly Castrillo",
-    instaUrl: "https://www.instagram.com/jossnicoletattoo/",
+    instaUrl: "https://www.instagram.com/adalia_tattoo/",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. tempor incididunt ut labore et dolore magna.",
     skills: [
       {

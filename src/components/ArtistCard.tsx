@@ -1,4 +1,13 @@
-import { Avatar, Chip, Icon, Typography, styled } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Chip,
+  Icon,
+  IconButton,
+  Typography,
+  styled,
+} from "@mui/material";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
 import { FaInstagram } from "react-icons/fa";
@@ -32,7 +41,7 @@ const AvatarWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: "4px",
-  marginTop: "-16px",
+  padding: "26px 4px",
   alignItems: "center",
   [theme.breakpoints.down("md")]: {},
 }));
@@ -78,29 +87,38 @@ type Skill = {
 };
 
 const ArtistCard = (props: Props) => {
+  const extractUsernameFromUrl = (url: string): string | null => {
+    const baseUrl = "https://www.instagram.com/";
+    if (url.startsWith(baseUrl)) {
+      const username = url.substring(baseUrl.length).split("/")[0];
+      return username || null;
+    }
+    return null;
+  };
+
   return (
     <MainContainer>
-      <Link href={props.instaUrl} rel="noreferrer">
-        <UpperSubcardWrapper>
-          <Icon
-            component={FaInstagram}
-            sx={{ color: "#FFF", fontSize: "28px" }}
+      <UpperSubcardWrapper>
+        <Button startIcon={<FaInstagram />} size="small" href={props.instaUrl}>
+          {`@${extractUsernameFromUrl(props.instaUrl)}`}
+        </Button>
+        {/* <Link href={props.instaUrl} rel="noreferrer"> */}
+        <AvatarWrapper>
+          <Avatar
+            alt={props.name}
+            src={props.avatar}
+            sx={{
+              width: "82px",
+              height: "82px",
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
           />
-          <AvatarWrapper>
-            <Avatar
-              alt={props.name}
-              src={props.avatar}
-              sx={{
-                width: "82px",
-                height: "82px",
-                boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-              }}
-            />
-            <Typography color="primary" variant="h6">
-              {props.name}
-            </Typography>
-          </AvatarWrapper>
-          <SkillsWrapper>
+          <Typography color="primary" variant="h6">
+            {props.name}
+          </Typography>
+        </AvatarWrapper>
+        {/* </Link> */}
+        {/* <SkillsWrapper>
             {props.skills.map((skill, index) => {
               return (
                 <Chip
@@ -111,9 +129,8 @@ const ArtistCard = (props: Props) => {
                 />
               );
             })}
-          </SkillsWrapper>
-        </UpperSubcardWrapper>
-      </Link>
+          </SkillsWrapper> */}
+      </UpperSubcardWrapper>
       <MediaWrapper>
         <ImageSlider imageUrls={props.artPhotos} />
       </MediaWrapper>
