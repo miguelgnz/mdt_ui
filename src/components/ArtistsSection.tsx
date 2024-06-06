@@ -44,9 +44,10 @@ const ArtistsSection = () => {
           Conoce a Nuestros Artistas
         </Typography>
         <Typography variant="body1" color="primary" textAlign="center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam
+          Nuestros artistas están comprometidos en traerte propuestas nuevas en
+          el mundo del tatuaje, un mundo lleno de arte y dedicación a lo que
+          hacemos en nuestros día a día, Desempeñando nuevas tendencias y
+          adaptandonos a las nuevas tecnologías que este hermoso arte trae
         </Typography>
       </SectionTitleWrapper>
       <CardsContainer>

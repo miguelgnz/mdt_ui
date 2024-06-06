@@ -125,7 +125,8 @@ const Footer = () => {
               <LocationInfoWrapper>
                 <IoLocationOutline />
                 <Typography color="primary" variant="body2">
-                  Ruta 4. 11-41 edificio Silk Local 103
+                  Vía 6 02-71 Ruta 3 Edificio Silk local 103 y 102 Zona 4,
+                  Ciudad de Guatemala
                 </Typography>
               </LocationInfoWrapper>
               <LocationInfoWrapper>
@@ -142,13 +143,13 @@ const Footer = () => {
             </Typography>
             <LinksWrapper>
               <Typography color="primary" variant="body2">
-                Lunes a viernes: 9:00 a.m - 9:00 p.m
+                Únicamente bajo de cita
               </Typography>
               <Typography color="primary" variant="body2">
-                Sábado: 10:00 a.m - 9:00 p.m
+                Lunes - Domingo
               </Typography>
               <Typography color="primary" variant="body2">
-                Domingo: Bajo cita
+                Horarios A.M y P.M
               </Typography>
             </LinksWrapper>
           </TitleAndLinksWrapper>

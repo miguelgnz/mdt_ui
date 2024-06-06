@@ -7,7 +7,8 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import Image from "next/image";
-import heroImg from "@/images/hero-img.jpg";
+import heroImg from "@/images/hero3.jpg";
+
 import { heroSectionData } from "@/utils/data";
 import { useState } from "react";
 import AppointmentModal from "@/components/AppointmentModal";
