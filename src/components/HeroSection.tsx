@@ -1,18 +1,9 @@
-import {
-  Button,
-  Typography,
-  styled,
-  Modal,
-  IconButton,
-  useMediaQuery,
-} from "@mui/material";
+import { Button, Typography, styled, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import heroImg from "@/images/hero3.jpg";
-
 import { heroSectionData } from "@/utils/data";
 import { useState } from "react";
 import AppointmentModal from "@/components/AppointmentModal";
-import { IoMdClose } from "react-icons/io";
 import OnEnterAnimation from "@/animations/Hero/OnEnterAnimation";
 import TitleAnimation from "@/animations/Hero/TitleAnimation";
 import SubtitleAnimation from "@/animations/Hero/SubtitleAnimation";
@@ -32,37 +23,12 @@ const HeroContent = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "38px",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const TitlesWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  [theme.breakpoints.down("md")]: {},
-}));
-
-const ModalInnerContainer = styled("div")(({ theme }) => ({
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  borderRadius: "16px",
-  padding: "16px 64px",
-  transform: "translate(-50%, -50%)",
-  backgroundColor: theme.palette.primary.main,
-  minWidth: "600px",
-  maxWidth: "800px",
-  maxHeight: "calc(100% - 64px)",
-  height: "600px",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "24px",
-  [theme.breakpoints.down("md")]: {
-    minWidth: "320px",
-    padding: "16px 48px",
-    overflow: "auto",
-  },
 }));
 
 const HeroSection = () => {
@@ -112,38 +78,7 @@ const HeroSection = () => {
           {heroSectionData.actionButton}
         </Button>
       </HeroContent>
-      <Modal open={modalOpen} onClose={handleClose}>
-        <ModalInnerContainer>
-          <IconButton
-            sx={{
-              position: "absolute",
-              display: "block",
-              right: "4px",
-              top: "4px",
-              zIndex: "1",
-              "& > svg": { fontSize: "1.8rem" },
-            }}
-            onClick={handleClose}
-          >
-            <IoMdClose />
-          </IconButton>
-          <AppointmentModal />
-          <Image
-            alt="logo"
-            src={"/mdt-logo.png"}
-            width={mobileView ? 70 : 90}
-            height={mobileView ? 70 : 90}
-            style={{
-              position: "absolute",
-              display: "block",
-              left: "42%",
-              bottom: "16px",
-              zIndex: "-1",
-              opacity: 0.4,
-            }}
-          />
-        </ModalInnerContainer>
-      </Modal>
+      <AppointmentModal modalOpen={modalOpen} handleClose={handleClose} />
     </MainContainer>
   );
 };
