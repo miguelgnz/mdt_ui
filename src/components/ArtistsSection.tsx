@@ -9,7 +9,6 @@ const MainContainer = styled("div")(({ theme }) => ({
   alignItems: "center",
   gap: "54px",
   padding: "64px 16px",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const SectionTitleWrapper = styled("div")(({ theme }) => ({

@@ -10,10 +10,6 @@ import StickyButton from "@/components/StickyButton";
 const BodyMainContainer = styled("div")(({ theme }) => ({
   margin: "64px 0 0 0",
   width: "100%",
-  // display: "flex",
-  // maxWidth: theme.breakpoints.values.lg,
-  // padding: "0 16px",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const AboutOutterContainer = styled("div")(({ theme }) => ({

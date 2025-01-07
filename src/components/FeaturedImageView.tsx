@@ -16,7 +16,6 @@ const AvatarContainer = styled("div")(({ theme }) => ({
     display: "flex",
     alignItems: "flex-end",
   },
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const FeaturedImageView = ({
