@@ -1,8 +1,21 @@
 import { Typography } from "@mui/material";
-import React from "react";
-
+import MainLayout from "@/styles/MainLayout";
 type Props = {};
 
 export default function ArtistProfilePage({}: Props) {
-  return <Typography color="primary">ArtistProfilePage</Typography>;
+  return (
+    <MainLayout>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "64px",
+        }}
+      >
+        <Typography variant="h1" color="yellow">
+          Artist Profile
+        </Typography>
+      </div>
+    </MainLayout>
+  );
 }

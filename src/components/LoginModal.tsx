@@ -41,7 +41,7 @@ export default function LoginModal({
     try {
       const response = await loginUser(email, password);
       setIsLoginModalOpen(false);
-      // router.push("/dashboard");
+      router.push("/artist-profile");
     } catch (error) {
       console.error(error);
     }
