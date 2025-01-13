@@ -11,11 +11,12 @@ import {
   Button,
 } from "@mui/material";
 import { FiMenu } from "react-icons/fi";
-import Link from "next/link";
 import { menuData } from "@/utils/data";
 import { useState } from "react";
 import Image from "next/image";
 import { navigateHomePage } from "@/utils/navigateHomePage";
+
+import LoginModal from "../LoginModal";
 
 const StyledAppbar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -49,9 +50,16 @@ const StyledMenuBtn = styled(Button)(({ theme }) => ({
   fontWeight: 400,
 }));
 
+const ActionButtonsWrapper = styled("div")(({ theme }) => ({
+  display: "flex",
+  gap: "12px",
+}));
+
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -130,6 +138,20 @@ const Navbar = () => {
               </MenuItem>
             );
           })}
+          <ActionButtonsWrapper>
+            <Button
+              variant="contained"
+              onClick={() => {
+                setIsLoginModalOpen(true);
+              }}
+            >
+              Login
+            </Button>
+          </ActionButtonsWrapper>
+          <LoginModal
+            isLoginModalOpen={isLoginModalOpen}
+            setIsLoginModalOpen={setIsLoginModalOpen}
+          />
         </LinksWrapper>
       </Toolbar>
     </StyledAppbar>
