@@ -88,7 +88,7 @@ export default function UserContextProvider({
       setUserLoading(true);
       const response = await loginUser(email, password);
       setIsAuthenticated(true);
-      setUser(response);
+      setUser(response.data);
     } catch (error) {
       console.error(error);
     } finally {

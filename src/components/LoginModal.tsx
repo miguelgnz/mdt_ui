@@ -34,6 +34,7 @@ export default function LoginModal({
 }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   const router = useRouter();
 
@@ -52,13 +53,17 @@ export default function LoginModal({
     try {
       setIsUserLoading(true);
       const response = await loginUser(email, password);
-      setUserData(response);
-      // Set in local storage for later use in useEffect in userCtx
-      localStorage.setItem("isAuthenticated", "true");
-      setIsUserLoading(false);
-      router.push("/artist-profile");
+
+      if (response.success) {
+        setUserData(response.data);
+        localStorage.setItem("isAuthenticated", "true");
+        router.push("/artist-profile");
+        setIsLoginModalOpen(false);
+      } else {
+        setError("Credenciales incorrectos, intenta nuevamente"); // User-friendly error message
+      }
     } catch (error) {
-      console.error(error);
+      setError("An unexpected error occurred. Please try again later."); // Fallback for unknown errors
     } finally {
       setIsUserLoading(false);
     }
@@ -77,37 +82,47 @@ export default function LoginModal({
         ) : (
           <>
             <form onSubmit={onClickLogin}>
-              <Typography variant="h6">Login</Typography>
+              <Typography variant="h4" mb={2}>
+                Iniciar sesión
+              </Typography>
               <Box
                 sx={{ display: "flex", flexDirection: "column", gap: "12px" }}
               >
                 <TextField
+                  color="secondary"
                   variant="outlined"
+                  label="Correo electrónico"
                   required
-                  type="text"
-                  placeholder="Username"
+                  type="email"
+                  onFocus={() => {
+                    setError(null);
+                  }}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
+                  color="secondary"
                   variant="outlined"
                   required
                   type="password"
-                  placeholder="Password"
+                  label="Contraseña"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+
+                {error !== "" && <Typography color="red">{error}</Typography>}
+
                 <Button
                   type="submit"
                   variant="contained"
                   color="success"
                   disabled={userLoading}
                 >
-                  Login
+                  Ingresar
                 </Button>
-                <Typography variant="body2">
-                  Don&apos;t have an account?
+                <Typography variant="body2" textAlign="center">
+                  ¿No tienes una cuenta?
                 </Typography>
                 <Button variant="outlined" color="secondary">
-                  Register
+                  Registrarse
                 </Button>
               </Box>
             </form>

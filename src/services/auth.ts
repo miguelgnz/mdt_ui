@@ -9,10 +9,12 @@ export const loginUser = async (email: string, password: string) => {
   });
 
   if (!response.ok) {
-    // Hadle error differently eg. show error message
-    throw new Error("Login failed");
+    const errorData = await response.json();
+
+    return { success: false, message: errorData.error || "Login failed" };
   }
-  return response.json();
+  const data = await response.json();
+  return { success: true, data };
 };
 
 export const getUserData = async () => {
@@ -29,4 +31,4 @@ export const getUserData = async () => {
     throw new Error("Fetching user data failed");
   }
   return response.json();
-}
+};
