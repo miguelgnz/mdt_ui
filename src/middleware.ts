@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 const protectedRoutes = ["/artist-profile"];
 const publicRoutes = ["/login", "/signup", "/"];
 
-console.log("Successfully entered middleware");
 export default async function middleware(req: NextRequest) {
   // 2. Check if the current route is protected or public
   const path = req.nextUrl.pathname;
@@ -13,14 +12,15 @@ export default async function middleware(req: NextRequest) {
   const isProtectedRoute = protectedRoutes.includes(path);
   const isPublicRoute = publicRoutes.includes(path);
 
-  console.log(isProtectedRoute);
-
   // 3. Get cookie from request
   const cookie = req.cookies.get("access-token")?.value;
-  console.log(cookie);
+
+  // Save token in local storage
+  // if (cookie) {
+  //   localStorage.setItem("access-token", cookie);
+  // }
 
   if (!cookie && isProtectedRoute) {
-    console.log("Condition 1 met");
     return NextResponse.redirect(new URL("/", req.url));
   }
 
@@ -30,7 +30,6 @@ export default async function middleware(req: NextRequest) {
   //   return NextResponse.redirect(new URL("/artist-profile", req.url));
   // }
 
-  //  Continue to the next middleware
   return NextResponse.next();
 }
 

@@ -8,11 +8,25 @@ export const loginUser = async (email: string, password: string) => {
     credentials: "include",
   });
 
-  console.log(response);
-
   if (!response.ok) {
     // Hadle error differently eg. show error message
     throw new Error("Login failed");
   }
   return response.json();
 };
+
+export const getUserData = async () => {
+  const response = await fetch("http://localhost:3000/api/auth/user", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    // Hadle error differently eg. show error message
+    throw new Error("Fetching user data failed");
+  }
+  return response.json();
+}

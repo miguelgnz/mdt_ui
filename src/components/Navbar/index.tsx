@@ -9,14 +9,17 @@ import {
   MenuItem,
   Divider,
   Button,
+  Avatar,
 } from "@mui/material";
 import { FiMenu } from "react-icons/fi";
 import { menuData } from "@/utils/data";
 import { useState } from "react";
 import Image from "next/image";
 import { navigateHomePage } from "@/utils/navigateHomePage";
-
+import { useRouter } from "next/router";
+import { useUser } from "@/context/UserContext";
 import LoginModal from "../LoginModal";
+import { deepOrange } from "@mui/material/colors";
 
 const StyledAppbar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -61,6 +64,10 @@ const Navbar = () => {
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
+  const router = useRouter();
+
+  const { isAuthenticated, user } = useUser();
+
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsMenuOpen(true);
@@ -76,7 +83,7 @@ const Navbar = () => {
       <Toolbar>
         <IconButton
           onClick={() => {
-            navigateHomePage("home");
+            router.push("/");
           }}
           size="large"
           edge="start"
@@ -139,14 +146,26 @@ const Navbar = () => {
             );
           })}
           <ActionButtonsWrapper>
-            <Button
-              variant="contained"
-              onClick={() => {
-                setIsLoginModalOpen(true);
-              }}
-            >
-              Login
-            </Button>
+            {isAuthenticated ? (
+              <Avatar
+                sx={{
+                  bgcolor: deepOrange[500],
+                  width: "44px",
+                  height: "44px",
+                }}
+              >
+                {`${user.firstName[0]}${user.lastName[0]}`}
+              </Avatar>
+            ) : (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setIsLoginModalOpen(true);
+                }}
+              >
+                Login
+              </Button>
+            )}
           </ActionButtonsWrapper>
           <LoginModal
             isLoginModalOpen={isLoginModalOpen}
