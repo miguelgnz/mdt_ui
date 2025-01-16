@@ -7,7 +7,7 @@ import {
   TextField,
   styled,
 } from "@mui/material";
-import { loginUser } from "@/services/auth";
+import { login } from "@/services/auth";
 import { useRouter } from "next/router";
 import { useUser } from "@/context/UserContext";
 import CustomLoader from "./CustomLoader";
@@ -41,7 +41,7 @@ export default function LoginModal({
   const {
     user,
     isAuthenticated,
-    login,
+    loginUser,
     userLoading,
     setUserData,
     setIsUserLoading,
@@ -52,7 +52,7 @@ export default function LoginModal({
 
     try {
       setIsUserLoading(true);
-      const response = await loginUser(email, password);
+      const response = await login(email, password);
 
       if (response.success) {
         setUserData(response.data);
@@ -60,7 +60,7 @@ export default function LoginModal({
         router.push("/artist-profile");
         setIsLoginModalOpen(false);
       } else {
-        setError("Credenciales incorrectos, intenta nuevamente"); // User-friendly error message
+        setError("Credenciales incorrectos");
       }
     } catch (error) {
       setError("An unexpected error occurred. Please try again later."); // Fallback for unknown errors
@@ -68,6 +68,7 @@ export default function LoginModal({
       setIsUserLoading(false);
     }
   };
+
 
   return (
     <Modal

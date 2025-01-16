@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, createContext, useState, useEffect } from "react";
-import { getUserData, loginUser } from "@/services/auth";
+import { getUserData, login, logout } from "@/services/auth";
 
 type User = {
   email: string;
@@ -13,7 +13,8 @@ type User = {
 
 type UserContextType = {
   user: User;
-  login: (email: string, password: string) => void;
+  loginUser: (email: string, password: string) => void;
+  logoutUser: () => void;
   setUserData: (value: User) => void;
   isAuthenticated: boolean;
   userLoading: boolean;
@@ -28,7 +29,8 @@ const UserContext = createContext<UserContextType>({
     lastName: "",
     phoneNumber: "",
   },
-  login: () => {},
+  loginUser: () => {},
+  logoutUser: () => {},
   setUserData: () => {},
   isAuthenticated: false,
   userLoading: true,
@@ -50,7 +52,7 @@ export default function UserContextProvider({
       try {
         setUserLoading(true);
         const response = await getUserData();
-        setUserData(response);
+        setUserData(response.data);
         setIsAuthenticated(true);
         setUserLoading(false);
       } catch (error) {
@@ -83,13 +85,37 @@ export default function UserContextProvider({
     setIsAuthenticated(true);
   };
 
-  const login = async (email: string, password: string) => {
+  const loginUser = async (email: string, password: string) => {
     try {
       setUserLoading(true);
-      const response = await loginUser(email, password);
+      const response = await login(email, password);
       setIsAuthenticated(true);
       setUser(response.data);
     } catch (error) {
+      console.error(error);
+    } finally {
+      setUserLoading(false);
+    }
+  };
+
+  const logoutUser = async () => {
+    try {
+      setUserLoading(true);
+      await logout();
+      setIsAuthenticated(false);
+      setUser({
+        email: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        phoneNumber: "",
+      });
+
+      // !
+
+      localStorage.removeItem("isAuthenticated");
+    } catch (error) {
+      // Handle error
       console.error(error);
     } finally {
       setUserLoading(false);
@@ -104,7 +130,8 @@ export default function UserContextProvider({
     <UserContext.Provider
       value={{
         user,
-        login,
+        loginUser,
+        logoutUser,
         setUserData,
         isAuthenticated,
         userLoading,

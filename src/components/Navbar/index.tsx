@@ -9,7 +9,6 @@ import {
   MenuItem,
   Divider,
   Button,
-  Avatar,
 } from "@mui/material";
 import { FiMenu } from "react-icons/fi";
 import { menuData } from "@/utils/data";
@@ -19,7 +18,7 @@ import { navigateHomePage } from "@/utils/navigateHomePage";
 import { useRouter } from "next/router";
 import { useUser } from "@/context/UserContext";
 import LoginModal from "../LoginModal";
-import { deepOrange } from "@mui/material/colors";
+import UserAvatar from "./UserAvatar";
 
 const StyledAppbar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -40,6 +39,7 @@ const LinksWrapper = styled("div")(({ theme }) => ({
 const StyledMenu = styled(Menu)(({ theme }) => ({
   "& .MuiPaper-root": {
     borderRadius: "14px",
+    padding: "6px",
   },
 }));
 
@@ -129,6 +129,17 @@ const Navbar = () => {
                 </StyledMenuLink>
               );
             })}
+            <Button
+              fullWidth
+              color="secondary"
+              variant="outlined"
+              onClick={() => {
+                setIsMenuOpen(false);
+                setIsLoginModalOpen(true);
+              }}
+            >
+              Login
+            </Button>
           </StyledMenu>
         </Box>
         <LinksWrapper>
@@ -146,16 +157,8 @@ const Navbar = () => {
             );
           })}
           <ActionButtonsWrapper>
-            {isAuthenticated ? (
-              <Avatar
-                sx={{
-                  bgcolor: deepOrange[500],
-                  width: "44px",
-                  height: "44px",
-                }}
-              >
-                {`${user.firstName[0]}${user.lastName[0]}`}
-              </Avatar>
+            {isAuthenticated && user.firstName && user.lastName ? (
+              <UserAvatar firstName={user.firstName} lastName={user.lastName} />
             ) : (
               <Button
                 variant="contained"
