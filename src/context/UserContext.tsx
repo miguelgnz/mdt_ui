@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, createContext, useState, useEffect } from "react";
-import { getUserData, login, logout } from "@/services/auth";
+import { getUserData, login, logout, register } from "@/services/auth";
 
 type User = {
   email: string;
@@ -13,6 +13,16 @@ type User = {
 
 type UserContextType = {
   user: User;
+  registerUser: (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    phoneNumber: string
+  ) => Promise<any>;
+  registrationSuccess: boolean;
+  setRegistrationSuccess: (value: boolean) => void;
+  registrationError: string | null;
   loginUser: (email: string, password: string) => void;
   logoutUser: () => void;
   setUserData: (value: User) => void;
@@ -29,6 +39,10 @@ const UserContext = createContext<UserContextType>({
     lastName: "",
     phoneNumber: "",
   },
+  registerUser: async () => Promise.resolve(),
+  registrationSuccess: false,
+  setRegistrationSuccess: () => {},
+  registrationError: null,
   loginUser: () => {},
   logoutUser: () => {},
   setUserData: () => {},
@@ -46,6 +60,15 @@ export default function UserContextProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userLoading, setUserLoading] = useState(false);
+
+  const [registrationError, setRegistrationError] = useState<string | null>(
+    null
+  );
+  const [registrationSuccess, setRegistrationSuccess] =
+    useState<boolean>(false);
+
   // Try to get user data from /api/auth/user endpoint on page load, if access is denied, set isAuthenticated to false
   useEffect(() => {
     const fetchUserData = async () => {
@@ -77,12 +100,44 @@ export default function UserContextProvider({
       phoneNumber: "",
     };
   });
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userLoading, setUserLoading] = useState(false);
 
   const setUserData = (user: User) => {
     setUser(user);
     setIsAuthenticated(true);
+  };
+
+  const registerUser = async (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    phoneNumber: string
+  ) => {
+    try {
+      setUserLoading(true);
+
+      const response = await register(
+        email,
+        password,
+        firstName,
+        lastName,
+        phoneNumber
+      );
+
+      setUserLoading(false);
+
+      if (!response.success) {
+        setRegistrationError(response.error);
+        setRegistrationSuccess(false);
+      } else {
+        setRegistrationError(null);
+        setRegistrationSuccess(true);
+      }
+    } catch (error) {
+      setRegistrationError(
+        "Ocurrió un error inesperado. Por favor intenta de nuevo."
+      );
+    }
   };
 
   const loginUser = async (email: string, password: string) => {
@@ -130,6 +185,10 @@ export default function UserContextProvider({
     <UserContext.Provider
       value={{
         user,
+        registerUser,
+        registrationSuccess,
+        setRegistrationSuccess,
+        registrationError,
         loginUser,
         logoutUser,
         setUserData,

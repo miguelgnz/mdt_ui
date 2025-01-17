@@ -40,9 +40,6 @@ const LoginForm = ({ setIsLoginModalOpen }: Props) => {
   };
   return (
     <form onSubmit={onClickLogin} style={{ width: "100%" }}>
-      <Typography variant="h4" mb={2}>
-        Iniciar sesión
-      </Typography>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <TextField
           color="secondary"
@@ -73,12 +70,6 @@ const LoginForm = ({ setIsLoginModalOpen }: Props) => {
           disabled={userLoading}
         >
           Ingresar
-        </Button>
-        <Typography variant="body2" textAlign="center">
-          ¿No tienes una cuenta?
-        </Typography>
-        <Button variant="outlined" color="secondary">
-          Registrarse
         </Button>
       </Box>
     </form>
