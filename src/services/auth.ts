@@ -34,11 +34,11 @@ export const login = async (email: string, password: string) => {
 
   if (!response.ok) {
     const errorData = await response.json();
-
-    return { success: false, message: errorData.error || "Login failed" };
+    return errorData;
   }
+
   const data = await response.json();
-  return { success: true, data };
+  return data;
 };
 
 export const getUserData = async () => {

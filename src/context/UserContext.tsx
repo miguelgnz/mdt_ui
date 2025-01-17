@@ -24,6 +24,7 @@ type UserContextType = {
   setRegistrationSuccess: (value: boolean) => void;
   registrationError: string | null;
   loginUser: (email: string, password: string) => void;
+  loginError: string | null;
   logoutUser: () => void;
   setUserData: (value: User) => void;
   isAuthenticated: boolean;
@@ -44,6 +45,7 @@ const UserContext = createContext<UserContextType>({
   setRegistrationSuccess: () => {},
   registrationError: null,
   loginUser: () => {},
+  loginError: null,
   logoutUser: () => {},
   setUserData: () => {},
   isAuthenticated: false,
@@ -62,6 +64,8 @@ export default function UserContextProvider({
 }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userLoading, setUserLoading] = useState(false);
+
+  const [loginError, setLoginError] = useState<string | null>(null);
 
   const [registrationError, setRegistrationError] = useState<string | null>(
     null
@@ -143,13 +147,21 @@ export default function UserContextProvider({
   const loginUser = async (email: string, password: string) => {
     try {
       setUserLoading(true);
+
       const response = await login(email, password);
-      setIsAuthenticated(true);
-      setUser(response.data);
-    } catch (error) {
-      console.error(error);
-    } finally {
+
       setUserLoading(false);
+
+      if (!response.success) {
+        setLoginError("Credenciales incorrectos");
+      } else {
+        setLoginError(null);
+        setUser(response.user);
+        setIsAuthenticated(true);
+        localStorage.setItem("isAuthenticated", "true");
+      }
+    } catch (error) {
+      setLoginError("Ocurrió un error inesperado. Por favor intenta de nuevo.");
     }
   };
 
@@ -190,6 +202,7 @@ export default function UserContextProvider({
         setRegistrationSuccess,
         registrationError,
         loginUser,
+        loginError,
         logoutUser,
         setUserData,
         isAuthenticated,
