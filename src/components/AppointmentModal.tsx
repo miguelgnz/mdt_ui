@@ -27,6 +27,7 @@ const ModalInnerContainer = styled("div")(({ theme }) => ({
   overflow: "auto",
   [theme.breakpoints.down("md")]: {
     width: "340px",
+    height: "480px",
     padding: "16px 48px",
     overflow: "auto",
   },

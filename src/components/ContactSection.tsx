@@ -10,7 +10,6 @@ const MainContainer = styled("div")(({ theme }) => ({
   alignItems: "center",
   gap: "54px",
   padding: "64px 16px",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const SectionTitleWrapper = styled("div")(({ theme }) => ({
@@ -72,9 +71,6 @@ const ContactSection = () => {
         <Typography variant="h4" color="primary" textAlign="center">
           Ubicación / Contacto
         </Typography>
-        {/* <Typography variant="body1" color="primary" textAlign="center">
-          Ubicación y contacto
-        </Typography> */}
       </SectionTitleWrapper>
       <ContactContentWrapper>
         <MapContainer>{isLoaded ? <BusinessLocationMap /> : null}</MapContainer>

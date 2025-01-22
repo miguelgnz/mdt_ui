@@ -11,7 +11,6 @@ const MainContainer = styled("div")(({ theme }) => ({
     height: "58px",
     color: theme.palette.primary.main,
   },
-  [theme.breakpoints.down("md")]: {},
 }));
 
 type Props = {

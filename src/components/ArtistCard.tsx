@@ -34,7 +34,6 @@ const MainContainer = styled("div")(({ theme }) => ({
   "& > a": {
     textDecoration: "none",
   },
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const AvatarWrapper = styled("div")(({ theme }) => ({
@@ -43,7 +42,6 @@ const AvatarWrapper = styled("div")(({ theme }) => ({
   gap: "4px",
   padding: "26px 4px",
   alignItems: "center",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const BioWrapper = styled("div")(({ theme }) => ({
@@ -51,7 +49,6 @@ const BioWrapper = styled("div")(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   margin: "8px 0",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const SkillsWrapper = styled("div")(({ theme }) => ({
@@ -61,7 +58,6 @@ const SkillsWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
   margin: "24px 0",
   gap: "6px",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const MediaWrapper = styled("div")(({ theme }) => ({
@@ -78,7 +74,6 @@ const UpperSubcardWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   padding: "16px 12px 0 12px",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 type Skill = {

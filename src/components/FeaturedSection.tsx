@@ -8,7 +8,6 @@ const MainContainer = styled("div")(({ theme }) => ({
   alignItems: "center",
   gap: "42px",
   padding: "0 16px 64px 16px",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const SectionTitleWrapper = styled("div")(({ theme }) => ({
@@ -63,7 +62,6 @@ const StyledRow = styled("div")(({ theme }) => ({
   display: "flex",
   gap: "18px",
   height: "50%",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const ImageContainer = styled("div")(({ theme }) => ({
@@ -73,7 +71,6 @@ const ImageContainer = styled("div")(({ theme }) => ({
   padding: "10px",
   width: "50%",
   height: "100%",
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const FeaturedSection = () => {

@@ -17,14 +17,13 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   bottom: "0",
   padding: "12px",
   cursor: "pointer",
-  borderRadius: '0',
+  borderRadius: "0",
   "&:hover": {
     backgroundColor: "rgb(0, 0, 0, 0.2)",
   },
   "& > svg": {
     fontSize: "2rem",
   },
-  [theme.breakpoints.down("md")]: {},
 }));
 
 const ImageSlider = ({ imageUrls }: Props) => {
@@ -55,8 +54,8 @@ const ImageSlider = ({ imageUrls }: Props) => {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: 'row',
-          overflow: 'hidden'
+          flexDirection: "row",
+          overflow: "hidden",
         }}
       >
         {imageUrls.map((url: StaticImageData, index: number) => {
@@ -71,9 +70,9 @@ const ImageSlider = ({ imageUrls }: Props) => {
                 height: "100%",
                 borderRadius: "0 0 12px 12px",
                 translate: `${-100 * imageIndex}%`,
-                flexShrink: '0',
-                flexGrow: '0',
-                transition: 'translate 200ms ease-in-out'
+                flexShrink: "0",
+                flexGrow: "0",
+                transition: "translate 200ms ease-in-out",
               }}
             />
           );

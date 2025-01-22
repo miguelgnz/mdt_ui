@@ -53,8 +53,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "12px",
-          height: '26px',
-          fontSize: '12px'
+          height: "26px",
+          fontSize: "12px",
         },
       },
     },
@@ -62,6 +62,9 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#FFFFFF",
+    },
+    secondary: {
+      main: "#000",
     },
     background_grey: {
       main: "rgba(45, 44, 44, 0.74)",
