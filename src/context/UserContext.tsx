@@ -1,11 +1,8 @@
-"use client";
-
 import { useContext, createContext, useState, useEffect } from "react";
 import { getUserData, login, logout, register } from "@/services/auth";
 
 type User = {
   email: string;
-  password: string;
   firstName: string;
   lastName: string;
   phoneNumber: string;
@@ -13,6 +10,8 @@ type User = {
 
 type UserContextType = {
   user: User;
+  setUser: (value: User) => void;
+  setIsAuthenticated: (value: boolean) => void;
   registerUser: (
     email: string,
     password: string,
@@ -23,34 +22,29 @@ type UserContextType = {
   registrationSuccess: boolean;
   setRegistrationSuccess: (value: boolean) => void;
   registrationError: string | null;
-  loginUser: (email: string, password: string) => void;
   loginError: string | null;
   logoutUser: () => void;
-  setUserData: (value: User) => void;
   isAuthenticated: boolean;
   userLoading: boolean;
-  setIsUserLoading: (value: boolean) => void;
 };
 
 const UserContext = createContext<UserContextType>({
   user: {
     email: "",
-    password: "",
     firstName: "",
     lastName: "",
     phoneNumber: "",
   },
+  setUser: () => {},
+  setIsAuthenticated: () => {},
   registerUser: async () => Promise.resolve(),
   registrationSuccess: false,
   setRegistrationSuccess: () => {},
   registrationError: null,
-  loginUser: () => {},
   loginError: null,
   logoutUser: () => {},
-  setUserData: () => {},
   isAuthenticated: false,
   userLoading: true,
-  setIsUserLoading: () => {},
 });
 
 export const useUser = () => {
@@ -62,11 +56,18 @@ export default function UserContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userLoading, setUserLoading] = useState(false);
+  const [user, setUser] = useState<User>(() => {
+    return {
+      email: "",
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+    };
+  });
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [userLoading, setUserLoading] = useState<boolean>(false);
 
   const [loginError, setLoginError] = useState<string | null>(null);
-
   const [registrationError, setRegistrationError] = useState<string | null>(
     null
   );
@@ -79,7 +80,7 @@ export default function UserContextProvider({
       try {
         setUserLoading(true);
         const response = await getUserData();
-        setUserData(response.data);
+        setUser(response.data);
         setIsAuthenticated(true);
         setUserLoading(false);
       } catch (error) {
@@ -94,21 +95,6 @@ export default function UserContextProvider({
       fetchUserData();
     }
   }, []);
-
-  const [user, setUser] = useState<User>(() => {
-    return {
-      email: "",
-      password: "",
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-    };
-  });
-
-  const setUserData = (user: User) => {
-    setUser(user);
-    setIsAuthenticated(true);
-  };
 
   const registerUser = async (
     email: string,
@@ -172,13 +158,10 @@ export default function UserContextProvider({
       setIsAuthenticated(false);
       setUser({
         email: "",
-        password: "",
         firstName: "",
         lastName: "",
         phoneNumber: "",
       });
-
-      // !
 
       localStorage.removeItem("isAuthenticated");
     } catch (error) {
@@ -189,25 +172,20 @@ export default function UserContextProvider({
     }
   };
 
-  const setIsUserLoading = (value: boolean) => {
-    setUserLoading(value);
-  };
-
   return (
     <UserContext.Provider
       value={{
         user,
+        setUser,
+        setIsAuthenticated,
         registerUser,
         registrationSuccess,
         setRegistrationSuccess,
         registrationError,
-        loginUser,
         loginError,
         logoutUser,
-        setUserData,
         isAuthenticated,
         userLoading,
-        setIsUserLoading,
       }}
     >
       {children}
