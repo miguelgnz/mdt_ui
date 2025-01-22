@@ -5,13 +5,22 @@ export const register = async (
   lastName: string,
   phoneNumber: string
 ) => {
-  const response = await fetch("http://localhost:3000/api/auth/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password, firstName, lastName, phoneNumber }),
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        firstName,
+        lastName,
+        phoneNumber,
+      }),
+    }
+  );
 
   if (!response.ok) {
     const errorData = await response.json();
@@ -23,14 +32,17 @@ export const register = async (
 };
 
 export const login = async (email: string, password: string) => {
-  const response = await fetch("http://localhost:3000/api/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-    credentials: "include",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+      credentials: "include",
+    }
+  );
 
   if (!response.ok) {
     const errorData = await response.json();
@@ -42,13 +54,16 @@ export const login = async (email: string, password: string) => {
 };
 
 export const getUserData = async () => {
-  const response = await fetch("http://localhost:3000/api/auth/user", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/auth/user`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  );
 
   if (!response.ok) {
     const errorData = await response.json();
@@ -64,13 +79,16 @@ export const getUserData = async () => {
 };
 
 export const logout = async () => {
-  const response = await fetch("http://localhost:3000/api/auth/logout", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  );
 
   if (!response.ok) {
     const errorData = await response.json();
