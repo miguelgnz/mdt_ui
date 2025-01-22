@@ -59,11 +59,11 @@ const MapContainer = styled("div")(({ theme }) => ({
 }));
 
 const ContactSection = () => {
-  // const { isLoaded } = useLoadScript({
-  //   id: "google-map-script",
-  //   googleMapsApiKey:
-  //     process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "DEFAULT_API_KEY",
-  // });
+  const { isLoaded } = useLoadScript({
+    id: "google-map-script",
+    googleMapsApiKey:
+      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "DEFAULT_API_KEY",
+  });
 
   return (
     <MainContainer id="contact">
@@ -73,7 +73,7 @@ const ContactSection = () => {
         </Typography>
       </SectionTitleWrapper>
       <ContactContentWrapper>
-        {/* <MapContainer>{isLoaded ? <BusinessLocationMap /> : null}</MapContainer> */}
+        <MapContainer>{isLoaded ? <BusinessLocationMap /> : null}</MapContainer>
         <InfoContainer>
           {contactInfoData.map((e) => {
             return <ContactInfoIcon key={e.id} icon={e.icon} label={e.label} />;
