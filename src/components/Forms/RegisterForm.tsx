@@ -107,6 +107,7 @@ const RegisterForm = ({ setSelectedForm }: Props) => {
           value={phone}
         />
         <TextField
+          autoComplete="email"
           color="secondary"
           variant="outlined"
           label="Correo electrónico"
@@ -117,6 +118,7 @@ const RegisterForm = ({ setSelectedForm }: Props) => {
           value={email}
         />
         <TextField
+          autoComplete="new-password"
           color="secondary"
           variant="outlined"
           required
@@ -132,6 +134,7 @@ const RegisterForm = ({ setSelectedForm }: Props) => {
           }
         />
         <TextField
+          autoComplete="new-password"
           color="secondary"
           variant="outlined"
           required
