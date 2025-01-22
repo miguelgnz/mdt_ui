@@ -92,56 +92,63 @@ const Navbar = () => {
           <Image alt="logo" src={"/mdt-logo.png"} width={40} height={40} />
         </IconButton>
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
-          <IconButton
-            aria-label="menu"
-            sx={{ color: "#f0f0f0" }}
-            onClick={handleMenu}
-            edge="end"
-          >
-            <FiMenu />
-          </IconButton>
-          <StyledMenu
-            anchorEl={anchorEl}
-            open={isMenuOpen}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-          >
-            {menuData.menu.items.map((item) => {
-              return (
-                <StyledMenuLink
+          {isAuthenticated ? (
+            <UserAvatar firstName={user.firstName} lastName={user.lastName} />
+          ) : (
+            <>
+              <IconButton
+                aria-label="menu"
+                sx={{ color: "#f0f0f0" }}
+                onClick={handleMenu}
+                edge="end"
+              >
+                <FiMenu />
+              </IconButton>
+              <StyledMenu
+                anchorEl={anchorEl}
+                open={isMenuOpen}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+              >
+                {menuData.menu.items.map((item) => {
+                  return (
+                    <StyledMenuLink
+                      onClick={() => {
+                        navigateHomePage(item.url);
+                        setIsMenuOpen(false);
+                      }}
+                      key={item.id}
+                    >
+                      <MenuItem>
+                        <Typography>{item.text}</Typography>
+                      </MenuItem>
+                      <Divider variant="middle" />
+                    </StyledMenuLink>
+                  );
+                })}
+                <Button
+                  fullWidth
+                  color="secondary"
+                  variant="outlined"
                   onClick={() => {
-                    navigateHomePage(item.url);
                     setIsMenuOpen(false);
+                    setIsLoginModalOpen(true);
                   }}
-                  key={item.id}
                 >
-                  <MenuItem>
-                    <Typography>{item.text}</Typography>
-                  </MenuItem>
-                  <Divider variant="middle" />
-                </StyledMenuLink>
-              );
-            })}
-            <Button
-              fullWidth
-              color="secondary"
-              variant="outlined"
-              onClick={() => {
-                setIsMenuOpen(false);
-                setIsLoginModalOpen(true);
-              }}
-            >
-              Login
-            </Button>
-          </StyledMenu>
+                  Login
+                </Button>
+              </StyledMenu>
+            </>
+          )}
         </Box>
+
         <LinksWrapper>
           {menuData.menu.items.map((item) => {
             return (
