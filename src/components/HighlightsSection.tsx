@@ -1,75 +1,88 @@
-import { Box, Typography, styled, Icon } from "@mui/material";
+import { Typography, styled } from "@mui/material";
 import { highlightsData } from "@/utils/data";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Container from "@/components/ui/Container";
+import SectionHeader from "@/components/ui/SectionHeader";
+import { colors } from "@/styles/theme";
 
-const MainContainer = styled(motion.div)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  gap: "64px",
-  justifyContent: "center",
-  padding: "64px 16px",
+const Section = styled("section")(({ theme }) => ({
+  padding: "112px 0",
   [theme.breakpoints.down("md")]: {
-    flexDirection: "column",
-    gap: "32px",
+    padding: "80px 0",
   },
 }));
 
-const HighlightWrapper = styled(motion.div)(({ theme }) => ({
+const Steps = styled(motion.ol)(() => ({
+  margin: "56px 0 0",
+  padding: 0,
+  listStyle: "none",
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+  gap: "1px",
+  background: colors.line,
+  border: `1px solid ${colors.line}`,
+}));
+
+const Step = styled(motion.li)(() => ({
+  background: colors.ink,
+  padding: "40px 32px",
   display: "flex",
   flexDirection: "column",
-  width: "25%",
-  alignItems: "center",
-  gap: "8px",
-  [theme.breakpoints.down("md")]: {
-    width: "100%",
-  },
+  gap: "16px",
 }));
 
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const item = {
+  hidden: { y: 16, opacity: 0 },
+  visible: { y: 0, opacity: 1 },
+};
+
 const HighlightsSection = () => {
-  // *Animation
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-      },
-    },
-  };
-  
-  // *Animation
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
   return (
-    <MainContainer
-      variants={container}
-      initial="hidden"
-      whileInView="visible"
-    >
-      {highlightsData.map((e, index) => {
-        return (
-          <HighlightWrapper key={index} variants={item}>
-            <Box>
-              <Image src={e.iconSrc} alt="logo" width={100} height={100} />
-            </Box>
-            <Typography color="primary" variant="h5" textAlign="center">
-              {e.title}
-            </Typography>
-            <Typography color="primary" variant="body1" textAlign="center">
-              {e.description}
-            </Typography>
-          </HighlightWrapper>
-        );
-      })}
-    </MainContainer>
+    <Section aria-labelledby="proceso">
+      <Container>
+        <SectionHeader
+          id="proceso"
+          title="Cómo trabajamos"
+          aside="Tu tatuaje es para siempre. Por eso cada pieza pasa por tres momentos contigo."
+        />
+        <Steps
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+        >
+          {highlightsData.map((e, index) => {
+            return (
+              <Step key={e.id} variants={item}>
+                <Image
+                  src={e.iconSrc}
+                  alt=""
+                  width={64}
+                  height={64}
+                  style={{ opacity: 0.9 }}
+                />
+                <Typography
+                  variant="caption"
+                  sx={{ letterSpacing: "0.18em", color: colors.subtle }}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </Typography>
+                <Typography variant="h4" component="h3">
+                  {e.title}
+                </Typography>
+                <Typography color="text.secondary">{e.description}</Typography>
+              </Step>
+            );
+          })}
+        </Steps>
+      </Container>
+    </Section>
   );
 };
 

@@ -1,84 +1,69 @@
 import { IconButton, styled, Typography, Modal } from "@mui/material";
 import { useState } from "react";
-import {
-  TbSquareRoundedChevronLeft,
-  TbSquareRoundedChevronRight,
-} from "react-icons/tb";
+import { FiChevronLeft, FiChevronRight, FiX } from "react-icons/fi";
 import Image from "next/image";
 import { modalSlidesdata } from "@/utils/data";
 import sanitizeHtlm from "sanitize-html";
-import { IoMdClose } from "react-icons/io";
+import { colors } from "@/styles/theme";
 
-const ModalInnerContainer = styled("div")(({ theme }) => ({
+const Panel = styled("div")(({ theme }) => ({
   position: "absolute",
   top: "50%",
   left: "50%",
-  width: "440px",
-  borderRadius: "16px",
-  padding: "16px 64px",
   transform: "translate(-50%, -50%)",
-  backgroundColor: theme.palette.primary.main,
+  width: "min(480px, calc(100% - 32px))",
   maxHeight: "calc(100% - 64px)",
-  height: "580px",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "24px",
   overflow: "auto",
-  [theme.breakpoints.down("md")]: {
-    width: "340px",
-    height: "480px",
-    padding: "16px 48px",
-    overflow: "auto",
-  },
-}));
-
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  display: "block",
-  position: "absolute",
-  top: "50%",
-  padding: "12px",
-  "& > svg": {
-    fontSize: "1.8rem",
-    color: "rgba(0, 0, 0, 0.54)",
-  },
-  "&:hover": {
-    backgroundColor: "rgb(0, 0, 0, 0.03)",
-  },
-  [theme.breakpoints.down("md")]: {
-    padding: "4px",
-  },
-}));
-
-const StyledCloseButton = styled(IconButton)(() => ({
-  position: "absolute",
-  display: "block",
-  right: "4px",
-  top: "4px",
-  zIndex: "1",
-  "& > svg": { fontSize: "1.8rem" },
-}));
-
-const ContentWrapper = styled("div")(({ theme }) => ({
+  padding: "56px 48px 32px",
+  borderRadius: "12px",
+  background: colors.surfaceRaised,
+  border: `1px solid ${colors.lineStrong}`,
+  color: colors.bone,
   display: "flex",
   flexDirection: "column",
-  gap: "64px",
-  width: "84%",
-  [theme.breakpoints.down("md")]: {
-    gap: "48px",
+  gap: "24px",
+  outline: "none",
+  [theme.breakpoints.down("sm")]: {
+    padding: "56px 24px 24px",
   },
 }));
 
-const SlideIconsWrapper = styled("div")(({ theme }) => ({
+const CloseButton = styled(IconButton)(() => ({
+  position: "absolute",
+  top: "12px",
+  right: "12px",
+  color: colors.muted,
+  "&:hover": { color: colors.bone },
+}));
+
+const Controls = styled("div")(() => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: "12px",
+  paddingTop: "8px",
+  borderTop: `1px solid ${colors.line}`,
+}));
+
+const ArrowButton = styled(IconButton)(() => ({
+  width: "44px",
+  height: "44px",
+  border: `1px solid ${colors.lineBright}`,
+  color: colors.bone,
+}));
+
+const Dots = styled("div")(() => ({
+  display: "flex",
+  gap: "6px",
+}));
+
+const SlideIconsWrapper = styled("div")(() => ({
   display: "flex",
   justifyContent: "center",
-  gap: "8px",
-  [theme.breakpoints.down("md")]: {
-    "& > img": {
-      width: "64px",
-      height: "64px",
-    },
-  },
+  gap: "12px",
+  padding: "12px",
+  borderRadius: "8px",
+  background: colors.bone,
 }));
 
 type Props = {
@@ -113,64 +98,70 @@ const AppointmentModal = ({ modalOpen, handleClose }: Props) => {
     allowedIframeHostnames: [],
   };
 
+  const slide = modalSlidesdata[slideIndex];
+
   return (
-    <Modal open={modalOpen} onClose={handleClose}>
-      <ModalInnerContainer>
-        <StyledCloseButton onClick={handleClose}>
-          <IoMdClose />
-        </StyledCloseButton>
-        <ContentWrapper>
-          <Typography
-            variant="h2"
-            color={"#000"}
-            textAlign={"center"}
-            fontWeight={500}
-          >
-            {modalSlidesdata[slideIndex].title}
-          </Typography>
-          <Typography
-            variant="body1"
-            color={"#000"}
-            textAlign={"center"}
-            dangerouslySetInnerHTML={{
-              __html: sanitizeHtlm(
-                modalSlidesdata[slideIndex].body,
-                sanitizeHtmlOptions
-              ),
-            }}
-          />
-          {/* Visa, MC, AMEX logos */}
-          {modalSlidesdata[slideIndex].icons && (
-            <SlideIconsWrapper id="icons-box">
-              {modalSlidesdata[slideIndex].icons?.map((icon, index) => {
-                return (
-                  <Image
-                    key={index}
-                    src={icon}
-                    alt={index.toString()}
-                    width={80}
-                    height={80}
-                  />
-                );
-              })}
-            </SlideIconsWrapper>
-          )}
-        </ContentWrapper>
-        <StyledIconButton
-          color="primary"
-          sx={{ left: "0" }}
-          onClick={showNextSlide}
-        >
-          <TbSquareRoundedChevronLeft />
-        </StyledIconButton>
-        <StyledIconButton
-          color="primary"
-          sx={{ right: "0" }}
-          onClick={showPrevSlide}
-        >
-          <TbSquareRoundedChevronRight />
-        </StyledIconButton>
-      </ModalInnerContainer>
+    <Modal
+      open={modalOpen}
+      onClose={handleClose}
+      aria-labelledby="appointment-modal-title"
+    >
+      <Panel>
+        <CloseButton aria-label="Cerrar" onClick={handleClose}>
+          <FiX />
+        </CloseButton>
+        <Typography variant="overline" color="text.secondary">
+          {slideIndex + 1} / {modalSlidesdata.length}
+        </Typography>
+        <Typography id="appointment-modal-title" variant="h2" component="h2">
+          {slide.title}
+        </Typography>
+        <Typography
+          color="text.secondary"
+          dangerouslySetInnerHTML={{
+            __html: sanitizeHtlm(slide.body, sanitizeHtmlOptions),
+          }}
+        />
+        {/* Visa, MC, AMEX logos */}
+        {slide.icons && (
+          <SlideIconsWrapper id="icons-box">
+            {slide.icons.map((icon, index) => {
+              return (
+                <Image
+                  key={index}
+                  src={icon}
+                  alt={["Visa", "Mastercard", "American Express"][index] ?? ""}
+                  width={64}
+                  height={64}
+                />
+              );
+            })}
+          </SlideIconsWrapper>
+        )}
+        <Controls>
+          <ArrowButton aria-label="Anterior" onClick={showPrevSlide}>
+            <FiChevronLeft />
+          </ArrowButton>
+          <Dots aria-hidden="true">
+            {modalSlidesdata.map((item, index) => (
+              <span
+                key={item.title}
+                style={{
+                  width: index === slideIndex ? "18px" : "6px",
+                  height: "6px",
+                  borderRadius: "999px",
+                  background:
+                    index === slideIndex ? colors.bone : colors.lineBright,
+                  transition: "width 200ms ease",
+                }}
+              />
+            ))}
+          </Dots>
+          <ArrowButton aria-label="Siguiente" onClick={showNextSlide}>
+            <FiChevronRight />
+          </ArrowButton>
+        </Controls>
+      </Panel>
     </Modal>
   );
 };

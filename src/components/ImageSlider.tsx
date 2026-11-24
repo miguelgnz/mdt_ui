@@ -1,32 +1,38 @@
 import { Box, IconButton, styled } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
-import {
-  TbSquareRoundedChevronLeft,
-  TbSquareRoundedChevronRight,
-} from "react-icons/tb";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useState } from "react";
 
 interface Props {
   imageUrls: string[] | any;
+  artistName?: string;
 }
 
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  display: "block",
+const NavButton = styled(IconButton)(() => ({
   position: "absolute",
-  top: "0",
-  bottom: "0",
-  padding: "12px",
-  cursor: "pointer",
-  borderRadius: "0",
-  "&:hover": {
-    backgroundColor: "rgb(0, 0, 0, 0.2)",
-  },
-  "& > svg": {
-    fontSize: "2rem",
-  },
+  top: "50%",
+  transform: "translateY(-50%)",
+  width: "44px",
+  height: "44px",
+  color: "#edeae4",
+  background: "rgba(10, 10, 10, 0.6)",
+  backdropFilter: "blur(6px)",
+  opacity: 0.9,
+  transition: "opacity 150ms ease, background 150ms ease",
+  "&:hover": { background: "rgba(10, 10, 10, 0.85)", opacity: 1 },
+  "& > svg": { fontSize: "1.25rem" },
 }));
 
-const ImageSlider = ({ imageUrls }: Props) => {
+const Dots = styled("div")(() => ({
+  position: "absolute",
+  left: "50%",
+  bottom: "14px",
+  transform: "translateX(-50%)",
+  display: "flex",
+  gap: "6px",
+}));
+
+const ImageSlider = ({ imageUrls, artistName = "artista" }: Props) => {
   const [imageIndex, setImageIndex] = useState(0);
 
   const showNextImage = () => {
@@ -63,35 +69,51 @@ const ImageSlider = ({ imageUrls }: Props) => {
             <Image
               key={index}
               src={url}
-              alt={`${url}`}
+              alt={`Trabajo de ${artistName} (${index + 1} de ${imageUrls.length})`}
+              aria-hidden={index !== imageIndex}
+              sizes="(min-width: 1200px) 300px, (min-width: 600px) 45vw, 90vw"
               style={{
                 objectFit: "cover",
                 width: "100%",
                 height: "100%",
-                borderRadius: "0 0 12px 12px",
                 translate: `${-100 * imageIndex}%`,
                 flexShrink: "0",
                 flexGrow: "0",
-                transition: "translate 200ms ease-in-out",
+                transition: "translate 300ms ease-in-out",
               }}
             />
           );
         })}
       </Box>
-      <StyledIconButton
-        color="primary"
-        sx={{ left: "0" }}
-        onClick={showNextImage}
-      >
-        <TbSquareRoundedChevronLeft />
-      </StyledIconButton>
-      <StyledIconButton
-        color="primary"
-        sx={{ right: "0" }}
+      <NavButton
+        aria-label="Imagen anterior"
+        sx={{ left: "12px" }}
         onClick={showPrevImage}
       >
-        <TbSquareRoundedChevronRight />
-      </StyledIconButton>
+        <FiChevronLeft />
+      </NavButton>
+      <NavButton
+        aria-label="Imagen siguiente"
+        sx={{ right: "12px" }}
+        onClick={showNextImage}
+      >
+        <FiChevronRight />
+      </NavButton>
+      <Dots aria-hidden="true">
+        {imageUrls.map((_: unknown, index: number) => (
+          <span
+            key={index}
+            style={{
+              width: index === imageIndex ? "18px" : "6px",
+              height: "6px",
+              borderRadius: "999px",
+              background:
+                index === imageIndex ? "#edeae4" : "rgba(237, 234, 228, 0.45)",
+              transition: "width 200ms ease",
+            }}
+          />
+        ))}
+      </Dots>
     </>
   );
 };

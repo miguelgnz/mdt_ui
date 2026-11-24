@@ -1,17 +1,8 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Chip,
-  Icon,
-  IconButton,
-  Typography,
-  styled,
-} from "@mui/material";
-import Link from "next/link";
+import { Avatar, Typography, styled } from "@mui/material";
 import { StaticImageData } from "next/image";
 import { FaInstagram } from "react-icons/fa";
 import ImageSlider from "./ImageSlider";
+import { colors } from "@/styles/theme";
 
 interface Props {
   id: number;
@@ -24,117 +15,97 @@ interface Props {
   artPhotos?: StaticImageData[];
 }
 
-const MainContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  width: "340px",
-  height: "auto",
-  borderRadius: "12px",
-  background: "#2D2C2C",
-  "& > a": {
-    textDecoration: "none",
-  },
-}));
-
-const AvatarWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: "4px",
-  padding: "26px 4px",
-  alignItems: "center",
-}));
-
-const BioWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  margin: "8px 0",
-}));
-
-const SkillsWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
-  justifyContent: "center",
-  margin: "24px 0",
-  gap: "6px",
-}));
-
-const MediaWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  position: "relative",
-  width: "100%",
-  height: "259px",
-  [theme.breakpoints.down("md")]: {
-    height: "271px",
-  },
-}));
-
-const UpperSubcardWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  padding: "16px 12px 0 12px",
-}));
-
 type Skill = {
   id: number;
   name: string;
 };
 
+const Card = styled("article")(() => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "16px",
+}));
+
+const MediaWrapper = styled("div")(() => ({
+  position: "relative",
+  width: "100%",
+  aspectRatio: "4 / 5",
+  borderRadius: "4px",
+  overflow: "hidden",
+  background: colors.surface,
+}));
+
+const InfoRow = styled("div")(() => ({
+  display: "flex",
+  alignItems: "center",
+  gap: "12px",
+}));
+
+const InstagramLink = styled("a")(() => ({
+  marginLeft: "auto",
+  display: "inline-flex",
+  padding: "10px",
+  margin: "-10px -10px -10px auto",
+  color: colors.muted,
+  borderRadius: "999px",
+  transition: "color 150ms ease",
+  "&:hover": { color: colors.bone },
+  "&:focus-visible": {
+    outline: `2px solid ${colors.bone}`,
+    outlineOffset: "2px",
+  },
+}));
+
+const extractUsernameFromUrl = (url: string): string | null => {
+  const baseUrl = "https://www.instagram.com/";
+  if (url.startsWith(baseUrl)) {
+    const username = url.substring(baseUrl.length).split("/")[0];
+    return username || null;
+  }
+  return null;
+};
+
 const ArtistCard = (props: Props) => {
-  const extractUsernameFromUrl = (url: string): string | null => {
-    const baseUrl = "https://www.instagram.com/";
-    if (url.startsWith(baseUrl)) {
-      const username = url.substring(baseUrl.length).split("/")[0];
-      return username || null;
-    }
-    return null;
-  };
+  const username = extractUsernameFromUrl(props.instaUrl);
 
   return (
-    <MainContainer>
-      <UpperSubcardWrapper>
-        <Button
-          startIcon={<FaInstagram />}
-          size="small"
-          href={props.instaUrl}
-          target="_blank"
-        >
-          {`@${extractUsernameFromUrl(props.instaUrl)}`}
-        </Button>
-        {/* <Link href={props.instaUrl} rel="noreferrer"> */}
-        <AvatarWrapper>
-          <Avatar
-            alt={props.name}
-            src={props.avatar}
-            sx={{
-              width: "82px",
-              height: "82px",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            }}
-          />
-          <Typography color="primary" variant="h6">
+    <Card>
+      <MediaWrapper>
+        <ImageSlider imageUrls={props.artPhotos} artistName={props.name} />
+      </MediaWrapper>
+      <InfoRow>
+        <Avatar
+          alt=""
+          src={props.avatar}
+          sx={{ width: 44, height: 44, filter: "grayscale(1)" }}
+        />
+        <div>
+          <Typography variant="h5" component="h3">
             {props.name}
           </Typography>
-        </AvatarWrapper>
-        {/* </Link> */}
-        {/* <SkillsWrapper>
-            {props.skills.map((skill, index) => {
-              return (
-                <Chip
-                  key={index}
-                  color="primary"
-                  variant="outlined"
-                  label={skill.name}
-                />
-              );
-            })}
-          </SkillsWrapper> */}
-      </UpperSubcardWrapper>
-      <MediaWrapper>
-        <ImageSlider imageUrls={props.artPhotos} />
-      </MediaWrapper>
-    </MainContainer>
+          {username && (
+            <Typography variant="body2" sx={{ color: colors.subtle }}>
+              @{username}
+            </Typography>
+          )}
+        </div>
+        <InstagramLink
+          href={props.instaUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Instagram de ${props.name}`}
+        >
+          <FaInstagram size={18} aria-hidden="true" />
+        </InstagramLink>
+      </InfoRow>
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        sx={{ letterSpacing: "0.04em" }}
+      >
+        {props.skills.map((skill) => skill.name).join(" · ")}
+      </Typography>
+    </Card>
   );
 };
 
