@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { MdOutlineLogout } from "react-icons/md";
 import { LuUser } from "react-icons/lu";
-import { deepOrange } from "@mui/material/colors";
+import { colors } from "@/styles/theme";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useUser } from "@/context/UserContext";
@@ -21,7 +21,9 @@ type Props = {
 };
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
-  backgroundColor: deepOrange[500],
+  backgroundColor: colors.bone,
+  color: colors.ink,
+  fontWeight: 600,
   width: "44px",
   height: "44px",
   fontSize: "16px",
@@ -48,6 +50,7 @@ const UserAvatar = ({ firstName, lastName }: Props) => {
   return (
     <>
       <IconButton
+        aria-label="Menú de usuario"
         onClick={(event) => {
           setAnchorEl(event.currentTarget);
         }}

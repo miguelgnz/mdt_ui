@@ -1,32 +1,36 @@
-import { Icon, Typography, styled } from "@mui/material";
+import { Icon, styled } from "@mui/material";
 import { IconType } from "react-icons";
+import { colors } from "@/styles/theme";
 
-const MainContainer = styled("div")(({ theme }) => ({
+const Row = styled("div")(() => ({
   display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "10px",
-  "& > svg": {
-    width: "58px",
-    height: "58px",
-    color: theme.palette.primary.main,
+  alignItems: "flex-start",
+  gap: "16px",
+  "& dt": {
+    flex: "none",
+    color: colors.muted,
+    lineHeight: 0,
+    paddingTop: "2px",
   },
+  "& dd": { margin: 0, color: colors.bone },
 }));
 
 type Props = {
   id?: number;
   label: string;
   icon: IconType;
+  description?: string;
 };
 
-const ContactInfoIcon = ({ id, label, icon }: Props) => {
+// One line of contact information (icon + text) inside a <dl>.
+const ContactInfoIcon = ({ label, icon, description }: Props) => {
   return (
-    <MainContainer>
-      <Icon component={icon} />
-      <Typography color="primary" maxWidth={200} textAlign="center" sx={{textDecoration: 'none'}}>
-        {label}
-      </Typography>
-    </MainContainer>
+    <Row>
+      <dt>
+        <Icon component={icon} aria-label={description} sx={{ fontSize: 20 }} />
+      </dt>
+      <dd>{label}</dd>
+    </Row>
   );
 };
 

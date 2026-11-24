@@ -1,225 +1,138 @@
-import { Box, Button, styled, Typography } from "@mui/material";
-import { menuData } from "@/utils/data";
+import { Box, Typography, styled } from "@mui/material";
 import Link from "next/link";
-import { SiInstagram, SiTiktok, SiWaze } from "react-icons/si";
-import { IoLocationOutline } from "react-icons/io5";
-import { useTheme } from "@mui/material";
+import { menuData } from "@/utils/data";
 import { navigateHomePage } from "@/utils/navigateHomePage";
+import Container from "@/components/ui/Container";
+import { colors } from "@/styles/theme";
 
-const MainContainer = styled("footer")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "64px",
-  height: "auto",
-  margin: "2rem 3rem",
-  [theme.breakpoints.down("sm")]: {
-    gap: "48px",
-  },
+const wazeUrl =
+  "https://www.waze.com/live-map/directions?to=ll.14.619648%2C-90.514104";
+
+const FooterRoot = styled("footer")(() => ({
+  borderTop: `1px solid ${colors.line}`,
 }));
 
-const FooterColumn = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: "24px",
-  width: "33%",
-  [theme.breakpoints.down("sm")]: {
-    width: "100%",
-  },
+const Columns = styled("div")(() => ({
+  padding: "56px 0 40px",
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+  gap: "32px",
 }));
 
-const TitleAndLinksWrapper = styled("div")(() => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: "8px",
-  alignItems: "center",
-}));
-
-const LinksWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: "8px",
-  "& > a": {
-    textDecoration: "none",
-    "& > svg": {
-      width: "26px",
-      height: "26px",
-      color: theme.palette.primary.main,
-    },
-  },
-  [theme.breakpoints.down("sm")]: {
-    "& > a": {
-      "& > svg": {
-        width: "22px",
-        height: "22px",
-      },
-    },
-  },
-}));
-
-const StyledLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  "&:hover": {
-    textDecoration: "underline",
-    color: theme.palette.primary.main,
-  },
-}));
-
-const LocationInfoWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "6px",
-  "& > svg": {
-    width: "22px",
-    height: "22px",
-    color: theme.palette.primary.main,
-  },
-  [theme.breakpoints.down("sm")]: {
-    "& > svg": {
-      width: "16px",
-      height: "16px",
-    },
-  },
-}));
-
-const StyledFooterLinkBtn = styled(Button)(({ theme }) => ({
+const Column = styled("div")(({ theme }) => ({
   ...theme.typography.body2,
-  fontSize: "12px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  gap: "8px",
+  color: colors.muted,
 }));
+
+const ColumnTitle = styled("span")(() => ({
+  fontSize: "12px",
+  letterSpacing: "0.18em",
+  color: colors.subtle,
+  marginBottom: "4px",
+}));
+
+const linkStyles = {
+  background: "none",
+  border: "none",
+  padding: 0,
+  font: "inherit",
+  color: colors.muted,
+  cursor: "pointer",
+  textDecoration: "none",
+  "&:hover": { color: colors.bone },
+  "&:focus-visible": {
+    outline: `2px solid ${colors.bone}`,
+    outlineOffset: "3px",
+    borderRadius: "2px",
+  },
+};
+
+const FooterButton = styled("button")(() => linkStyles);
+const FooterLink = styled(Link)(() => linkStyles);
 
 const Footer = () => {
-  const theme = useTheme();
-
   return (
-    <MainContainer>
-      <Box
-        id="mainContent"
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "32px",
-          width: "100%",
-          maxWidth: theme.breakpoints.values.lg,
-          justifyContent: "space-between",
-          [theme.breakpoints.down("sm")]: {
-            flexDirection: "column",
-          },
-        }}
-      >
-        <FooterColumn>
-          <TitleAndLinksWrapper>
-            <Typography color="primary" variant="h6">
-              ENLACES
+    <FooterRoot>
+      <Container>
+        <Columns>
+          <Column>
+            <Typography
+              variant="h6"
+              component="span"
+              sx={{ color: colors.bone, fontSize: "26px" }}
+            >
+              Mar de Tinta
             </Typography>
-            <LinksWrapper>
-              {menuData.menu.items.map((item, index) => {
-                return (
-                  <StyledFooterLinkBtn
-                    size="small"
-                    key={index}
-                    onClick={() => {
-                      navigateHomePage(item.url);
-                    }}
-                  >
-                    {item.text}
-                  </StyledFooterLinkBtn>
-                );
-              })}
-            </LinksWrapper>
-          </TitleAndLinksWrapper>
-        </FooterColumn>
-        <FooterColumn>
-          <TitleAndLinksWrapper>
-            <Typography color="primary" variant="h6">
-              UBICACIÓN
-            </Typography>
-            <LinksWrapper>
-              <LocationInfoWrapper>
-                <IoLocationOutline />
-                <Typography
-                  color="primary"
-                  variant="body2"
-                  sx={{
-                    maxWidth: "264px",
-                    textAlign: "center",
-                  }}
-                >
-                  Vía 6 02-71 Ruta 3 Edificio Silk local 103 y 102 Zona 4,
-                  Ciudad de Guatemala
-                </Typography>
-              </LocationInfoWrapper>
-              <Link
-                href="https://www.waze.com/live-map/directions?to=ll.14.619648%2C-90.514104"
-                target="_blank"
+            <span>
+              Tattoo &amp; Body Piercing
+              <br />
+              Vía 6 02-71, Ruta 3, Edificio Silk, locales 102 y 103, Zona 4,
+              Ciudad de Guatemala
+            </span>
+          </Column>
+          <Column as="nav" aria-label="Enlaces del pie de página">
+            <ColumnTitle>ENLACES</ColumnTitle>
+            {menuData.menu.items.map((item) => (
+              <FooterButton
+                key={item.id}
+                type="button"
+                onClick={() => navigateHomePage(item.url)}
               >
-                <LocationInfoWrapper>
-                  <SiWaze />
-                  <Typography color="primary" variant="body2">
-                    Estudio Mar de Tinta
-                  </Typography>
-                </LocationInfoWrapper>
-              </Link>
-            </LinksWrapper>
-          </TitleAndLinksWrapper>
-          <TitleAndLinksWrapper>
-            <Typography color="primary" variant="h6">
-              HORARIOS
-            </Typography>
-            <LinksWrapper>
-              <Typography color="primary" variant="body2" textAlign="center">
-                Únicamente bajo cita
-              </Typography>
-              <Typography color="primary" variant="body2" textAlign="center">
-                Lunes - Domingo
-              </Typography>
-              <Typography color="primary" variant="body2" textAlign="center">
-                Horarios A.M y P.M
-              </Typography>
-            </LinksWrapper>
-          </TitleAndLinksWrapper>
-        </FooterColumn>
-        <FooterColumn>
-          <TitleAndLinksWrapper>
-            <Typography color="primary" variant="h6">
-              SIGUENOS
-            </Typography>
-            <LinksWrapper sx={{ flexDirection: "row", gap: "6px" }}>
-              <Link href="https://www.instagram.com/estudio_mardetinta/">
-                <SiInstagram />
-              </Link>
-              <Link href={"#"}>
-                <SiTiktok />
-              </Link>
-              <Link
-                href="https://www.waze.com/live-map/directions?to=ll.14.619648%2C-90.514104"
-                target="_blank"
-              >
-                <SiWaze />
-              </Link>
-            </LinksWrapper>
-          </TitleAndLinksWrapper>
-        </FooterColumn>
-      </Box>
-      <Box id="captionWrapper">
-        <Typography
-          color="primary"
-          variant="caption"
-          component={"p"}
-          textAlign="center"
+                {item.text}
+              </FooterButton>
+            ))}
+          </Column>
+          <Column>
+            <ColumnTitle>HORARIOS</ColumnTitle>
+            <span>Únicamente bajo cita</span>
+            <span>Lunes a domingo</span>
+            <span>Horarios a.m. y p.m.</span>
+          </Column>
+          <Column>
+            <ColumnTitle>SÍGUENOS</ColumnTitle>
+            <FooterLink
+              href="https://www.instagram.com/estudio_mardetinta/"
+              target="_blank"
+            >
+              Instagram
+            </FooterLink>
+            <FooterLink href={"#"}>TikTok</FooterLink>
+            <FooterLink href={wazeUrl} target="_blank">
+              Waze
+            </FooterLink>
+          </Column>
+        </Columns>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            gap: 1.5,
+            py: 3,
+            borderTop: `1px solid ${colors.line}`,
+            fontSize: "13px",
+            color: colors.subtle,
+          }}
         >
-          Estudio Mar de Tinta 2024. Design & Development:{" "}
-          <Link
-            href={"https://www.miguelgnz.com/"}
-            target="_blank"
-            rel="noreferrer"
-            style={{ textDecoration: "underline", color: "inherit" }}
-          >
-            Miguel Gnz
-          </Link>
-        </Typography>
-      </Box>
-    </MainContainer>
+          <span>© {new Date().getFullYear()} Estudio Mar de Tinta</span>
+          <span>
+            Diseño y desarrollo:{" "}
+            <Link
+              href={"https://www.miguelgnz.dev/"}
+              target="_blank"
+              rel="noreferrer"
+              style={{ textDecoration: "underline", color: colors.muted }}
+            >
+              Miguel González
+            </Link>
+          </span>
+        </Box>
+      </Container>
+    </FooterRoot>
   );
 };
 
