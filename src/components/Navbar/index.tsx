@@ -2,67 +2,101 @@ import {
   AppBar,
   Box,
   IconButton,
-  Typography,
   Toolbar,
   styled,
   Menu,
   MenuItem,
-  Divider,
   Button,
 } from "@mui/material";
-import { FiMenu } from "react-icons/fi";
+import { FiMenu, FiUser } from "react-icons/fi";
 import { menuData } from "@/utils/data";
 import { useState } from "react";
 import Image from "next/image";
 import { navigateHomePage } from "@/utils/navigateHomePage";
 import { useRouter } from "next/router";
 import { useUser } from "@/context/UserContext";
+import { colors } from "@/styles/theme";
 import LoginModal from "../LoginModal";
+import AppointmentModal from "../AppointmentModal";
 import UserAvatar from "./UserAvatar";
 
-const StyledAppbar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
-  "& .MuiToolbar-root": {
-    justifyContent: "space-between",
+const StyledAppbar = styled(AppBar)(() => ({
+  backgroundColor: "rgba(10, 10, 10, 0.86)",
+  backdropFilter: "blur(12px)",
+  backgroundImage: "none",
+  border: "none",
+  borderBottom: `1px solid ${colors.line}`,
+  boxShadow: "none",
+}));
+
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  width: "100%",
+  maxWidth: "1240px",
+  margin: "0 auto",
+  minHeight: "72px",
+  justifyContent: "space-between",
+  gap: "24px",
+  padding: "0 16px",
+  [theme.breakpoints.up("sm")]: {
+    padding: "0 24px",
+    minHeight: "72px",
+  },
+}));
+
+const Brand = styled("button")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: "12px",
+  padding: "4px",
+  margin: "-4px",
+  background: "none",
+  border: "none",
+  color: colors.bone,
+  cursor: "pointer",
+  fontFamily: theme.typography.h6.fontFamily,
+  fontSize: "24px",
+  fontWeight: 500,
+  letterSpacing: "0.02em",
+  "&:focus-visible": {
+    outline: `2px solid ${colors.bone}`,
+    outlineOffset: "3px",
+    borderRadius: "4px",
   },
 }));
 
 const LinksWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: "12px",
+  gap: "28px",
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
 }));
 
-const StyledMenu = styled(Menu)(({ theme }) => ({
-  "& .MuiPaper-root": {
-    borderRadius: "14px",
-    padding: "6px",
+const NavLink = styled("button")(({ theme }) => ({
+  ...theme.typography.body2,
+  background: "none",
+  border: "none",
+  padding: "10px 0",
+  color: colors.muted,
+  cursor: "pointer",
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "6px",
+  transition: "color 150ms ease",
+  "&:hover": { color: colors.bone },
+  "&:focus-visible": {
+    outline: `2px solid ${colors.bone}`,
+    outlineOffset: "3px",
+    borderRadius: "4px",
   },
-}));
-
-const StyledMenuLink = styled(Typography)(({ theme }) => ({
-  textDecoration: "none",
-  color: "#02121F",
-}));
-
-const StyledMenuBtn = styled(Button)(({ theme }) => ({
-  ...theme.typography.h6,
-  fontWeight: 400,
-}));
-
-const ActionButtonsWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  gap: "12px",
 }));
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
 
   const router = useRouter();
 
@@ -80,71 +114,81 @@ const Navbar = () => {
 
   return (
     <StyledAppbar position="fixed">
-      <Toolbar>
-        <IconButton
+      <StyledToolbar disableGutters>
+        <Brand
+          type="button"
           onClick={() => {
             router.push("/");
           }}
-          size="large"
-          edge="start"
-          sx={{ color: "#f0f0f0" }}
         >
-          <Image alt="logo" src={"/mdt-logo.png"} width={40} height={40} />
-        </IconButton>
-        <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <Image alt="" src={"/mdt-logo.png"} width={40} height={40} />
+          Mar de Tinta
+        </Brand>
+
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
           {isAuthenticated ? (
             <UserAvatar firstName={user.firstName} lastName={user.lastName} />
           ) : (
             <>
               <IconButton
-                aria-label="menu"
-                sx={{ color: "#f0f0f0" }}
+                aria-label="Abrir menú"
+                sx={{ color: colors.bone }}
                 onClick={handleMenu}
                 edge="end"
               >
                 <FiMenu />
               </IconButton>
-              <StyledMenu
+              <Menu
                 anchorEl={anchorEl}
                 open={isMenuOpen}
                 onClose={handleClose}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                transformOrigin={{ vertical: "top", horizontal: "right" }}
+                slotProps={{ paper: { sx: { minWidth: 220, p: 1 } } }}
               >
                 {menuData.menu.items.map((item) => {
                   return (
-                    <StyledMenuLink
+                    <MenuItem
+                      key={item.id}
+                      sx={{ borderRadius: "8px", py: 1.25 }}
                       onClick={() => {
                         navigateHomePage(item.url);
                         setIsMenuOpen(false);
                       }}
-                      key={item.id}
                     >
-                      <MenuItem>
-                        <Typography>{item.text}</Typography>
-                      </MenuItem>
-                      <Divider variant="middle" />
-                    </StyledMenuLink>
+                      {item.text}
+                    </MenuItem>
                   );
                 })}
-                <Button
-                  fullWidth
-                  color="secondary"
-                  variant="outlined"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    setIsLoginModalOpen(true);
-                  }}
-                >
-                  Login
-                </Button>
-              </StyledMenu>
+                <Box sx={{ display: "grid", gap: 1, pt: 1 }}>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsAppointmentOpen(true);
+                    }}
+                  >
+                    Agenda tu cita
+                  </Button>
+                  <Button
+                    fullWidth
+                    variant="outlined"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsLoginModalOpen(true);
+                    }}
+                  >
+                    Ingresar
+                  </Button>
+                </Box>
+              </Menu>
             </>
           )}
         </Box>
@@ -152,37 +196,48 @@ const Navbar = () => {
         <LinksWrapper>
           {menuData.menu.items.map((item) => {
             return (
-              <MenuItem key={item.id}>
-                <StyledMenuBtn
-                  onClick={() => {
-                    navigateHomePage(item.url);
-                  }}
-                >
-                  {item.text}
-                </StyledMenuBtn>
-              </MenuItem>
-            );
-          })}
-          <ActionButtonsWrapper>
-            {isAuthenticated && user.firstName && user.lastName ? (
-              <UserAvatar firstName={user.firstName} lastName={user.lastName} />
-            ) : (
-              <Button
-                variant="contained"
+              <NavLink
+                key={item.id}
+                type="button"
                 onClick={() => {
-                  setIsLoginModalOpen(true);
+                  navigateHomePage(item.url);
                 }}
               >
-                Login
-              </Button>
-            )}
-          </ActionButtonsWrapper>
-          <LoginModal
-            isLoginModalOpen={isLoginModalOpen}
-            setIsLoginModalOpen={setIsLoginModalOpen}
-          />
+                {item.text}
+              </NavLink>
+            );
+          })}
+          {isAuthenticated && user.firstName && user.lastName ? (
+            <UserAvatar firstName={user.firstName} lastName={user.lastName} />
+          ) : (
+            <NavLink
+              type="button"
+              onClick={() => {
+                setIsLoginModalOpen(true);
+              }}
+            >
+              <FiUser aria-hidden="true" />
+              Ingresar
+            </NavLink>
+          )}
+          <Button
+            variant="contained"
+            onClick={() => {
+              setIsAppointmentOpen(true);
+            }}
+          >
+            Agenda tu cita
+          </Button>
         </LinksWrapper>
-      </Toolbar>
+        <LoginModal
+          isLoginModalOpen={isLoginModalOpen}
+          setIsLoginModalOpen={setIsLoginModalOpen}
+        />
+        <AppointmentModal
+          modalOpen={isAppointmentOpen}
+          handleClose={() => setIsAppointmentOpen(false)}
+        />
+      </StyledToolbar>
     </StyledAppbar>
   );
 };

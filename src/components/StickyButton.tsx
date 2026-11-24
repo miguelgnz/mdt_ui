@@ -1,37 +1,40 @@
-import { styled, IconButton } from "@mui/material";
+import { styled } from "@mui/material";
 import { FaWhatsapp } from "react-icons/fa";
+import { colors } from "@/styles/theme";
 
-const MainContainer = styled("div")(({ theme }) => ({
-  zIndex: "8",
+const FloatingButton = styled("a")(() => ({
   position: "fixed",
-  bottom: "20px",
-  right: "20px",
-  cursor: "pointer",
-  boxShadow: "0px 4px 8px 0px rgba(105, 138, 111, 0.20)",
+  zIndex: 8,
+  right: "24px",
+  bottom: "24px",
+  width: "56px",
+  height: "56px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   borderRadius: "50%",
-  background: "#25D366",
-
-  [theme.breakpoints.down("sm")]: {},
+  "&:focus-visible": {
+    outline: `2px solid ${colors.bone}`,
+    outlineOffset: "3px",
+  },
+  background: colors.bone,
+  color: colors.ink,
+  boxShadow: "0 8px 24px rgba(0, 0, 0, 0.5)",
+  transition: "transform 150ms ease",
+  "&:hover": { background: "#ffffff", transform: "translateY(-2px)" },
+  "& > svg": { width: "26px", height: "26px" },
 }));
 
 const StickyButton = () => {
   return (
-    <MainContainer>
-      <IconButton
-        href="https://wa.me/50231366446"
-        rel="noreferrer"
-        sx={{
-          padding: "12px",
-          "& > svg": {
-            width: "1.8em",
-            height: "1.8em",
-            fill: "#FFF",
-          },
-        }}
-      >
-        <FaWhatsapp />
-      </IconButton>
-    </MainContainer>
+    <FloatingButton
+      href="https://wa.me/50231366446"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Escríbenos por WhatsApp"
+    >
+      <FaWhatsapp aria-hidden="true" />
+    </FloatingButton>
   );
 };
 

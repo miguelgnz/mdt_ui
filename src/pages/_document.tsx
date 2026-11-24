@@ -7,12 +7,9 @@ import createEmotionCache from "../utils/createEmotionCache";
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en" style={{ scrollBehavior: "smooth" }}>
+      <Html lang="es">
         <Head>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
+          <meta name="theme-color" content="#0a0a0a" />
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <link rel="favicon" href="/favicon.ico" sizes="any" />
           <link rel="apple-icon" href="/favicon.ico" sizes="any" />
@@ -68,8 +65,9 @@ MyDocument.getInitialProps = async (ctx) => {
   /* eslint-disable */
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App: any) => (props) =>
-        <App emotionCache={cache} {...props} />,
+      enhanceApp: (App: any) => (props) => (
+        <App emotionCache={cache} {...props} />
+      ),
     });
   /* eslint-enable */
 

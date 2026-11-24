@@ -1,59 +1,58 @@
-import { Box, Typography, styled } from "@mui/material";
+import { styled, Typography } from "@mui/material";
+import { FiArrowRight } from "react-icons/fi";
 import { artistsData } from "@/utils/data";
 import ArtistCard from "@/components/ArtistCard";
 import CardAnimation from "@/animations/CardAnimation";
+import Container from "@/components/ui/Container";
+import SectionHeader from "@/components/ui/SectionHeader";
+import { colors } from "@/styles/theme";
 
-const MainContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "54px",
-  padding: "64px 16px",
-}));
-
-const SectionTitleWrapper = styled("div")(({ theme }) => ({
-  width: "60%",
-  display: "flex",
-  flexDirection: "column",
-  gap: "12px",
-  alignItems: "center",
+const Section = styled("section")(({ theme }) => ({
+  padding: "0 0 112px",
   [theme.breakpoints.down("md")]: {
-    width: "100%",
+    padding: "0 0 80px",
   },
 }));
 
-const CardsContainer = styled("div")(({ theme }) => ({
+const Grid = styled("div")(() => ({
+  marginTop: "48px",
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+  gap: "40px 24px",
+}));
+
+const InviteCard = styled("a")(() => ({
   display: "flex",
-  flexDirection: "row",
-  gap: "64px",
-  flexWrap: "wrap",
+  flexDirection: "column",
   justifyContent: "center",
-  maxWidth: theme.breakpoints.values.md,
-  [theme.breakpoints.down("md")]: {
-    flexDirection: "column",
-    gap: "48px",
+  gap: "16px",
+  padding: "32px",
+  minHeight: "100%",
+  border: `1px solid ${colors.lineStrong}`,
+  borderRadius: "4px",
+  color: colors.bone,
+  textDecoration: "none",
+  transition: "border-color 150ms ease",
+  "&:hover": { borderColor: colors.muted },
+  "&:focus-visible": {
+    outline: `2px solid ${colors.bone}`,
+    outlineOffset: "3px",
   },
 }));
 
 const ArtistsSection = () => {
   return (
-    <MainContainer id="artists">
-      <SectionTitleWrapper>
-        <Typography variant="h4" color="primary" textAlign="center">
-          Conoce a Nuestros Artistas
-        </Typography>
-        <Typography variant="body1" color="primary" textAlign="center">
-          Nuestros artistas están comprometidos en traerte propuestas nuevas en
-          el mundo del tatuaje, un mundo lleno de arte y dedicación a lo que
-          hacemos en nuestros día a día, Desempeñando nuevas tendencias y
-          adaptandonos a las nuevas tecnologías que este hermoso arte trae
-        </Typography>
-      </SectionTitleWrapper>
-      <CardsContainer>
-        {artistsData.map((artist, index) => {
-          return (
-            <Box key={index}>
-              <CardAnimation>
+    <Section id="artists" aria-labelledby="artistas-titulo">
+      <Container>
+        <SectionHeader
+          id="artistas-titulo"
+          title="Nuestros artistas"
+          aside="Comprometidos con traerte propuestas nuevas en el mundo del tatuaje: arte, dedicación y las nuevas tendencias."
+        />
+        <Grid>
+          {artistsData.map((artist) => {
+            return (
+              <CardAnimation key={artist.id}>
                 <ArtistCard
                   id={artist.id}
                   name={artist.name}
@@ -65,11 +64,34 @@ const ArtistsSection = () => {
                   artPhotos={artist.artPhotos}
                 />
               </CardAnimation>
-            </Box>
-          );
-        })}
-      </CardsContainer>
-    </MainContainer>
+            );
+          })}
+          <InviteCard
+            href="https://wa.me/50231366446"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Typography variant="h5" component="span" sx={{ fontSize: "34px" }}>
+              ¿No sabes con quién tatuarte?
+            </Typography>
+            <Typography color="text.secondary">
+              Cuéntanos tu idea y te recomendamos al artista ideal.
+            </Typography>
+            <Typography
+              component="span"
+              sx={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 1,
+                fontWeight: 600,
+              }}
+            >
+              Escríbenos <FiArrowRight aria-hidden="true" />
+            </Typography>
+          </InviteCard>
+        </Grid>
+      </Container>
+    </Section>
   );
 };
 

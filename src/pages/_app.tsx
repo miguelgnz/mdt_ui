@@ -9,6 +9,7 @@ import UserContextProvider from "@/context/UserContext";
 // import "@fontsource/roboto/700.css";
 
 import createEmotionCache from "../utils/createEmotionCache";
+import { MotionConfig } from "framer-motion";
 import theme from "@/styles/theme";
 
 interface MyAppProps extends AppProps {
@@ -24,9 +25,11 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <UserContextProvider>
-          <Component {...pageProps} />
-        </UserContextProvider>
+        <MotionConfig reducedMotion="user">
+          <UserContextProvider>
+            <Component {...pageProps} />
+          </UserContextProvider>
+        </MotionConfig>
       </ThemeProvider>
     </CacheProvider>
   );

@@ -1,5 +1,6 @@
-import { Avatar, styled, Typography } from "@mui/material";
+import { Typography, styled } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
+import { colors } from "@/styles/theme";
 
 type Props = {
   imageSrc: string | StaticImageData;
@@ -7,56 +8,52 @@ type Props = {
   avatarSize: number;
   author: string;
   typographyVariant: any;
+  primary?: boolean;
 };
 
-const AvatarContainer = styled("div")(({ theme }) => ({
+const Figure = styled("figure")(() => ({
+  margin: 0,
+  height: "100%",
   display: "flex",
-  gap: "6px",
-  "& > p": {
-    display: "flex",
-    alignItems: "flex-end",
+  flexDirection: "column",
+  gap: "10px",
+}));
+
+const Frame = styled("div")(() => ({
+  position: "relative",
+  flex: 1,
+  minHeight: "240px",
+  borderRadius: "4px",
+  overflow: "hidden",
+  "& img": { transition: "transform 600ms ease" },
+  "&:hover img": { transform: "scale(1.03)" },
+  "@media (prefers-reduced-motion: reduce)": {
+    "&:hover img": { transform: "none" },
   },
 }));
 
-const FeaturedImageView = ({
-  imageSrc,
-  avatarSrc,
-  avatarSize,
-  author,
-  typographyVariant,
-}: Props) => {
+const FeaturedImageView = ({ imageSrc, author, primary = false }: Props) => {
   return (
-    <>
-      <Image
-        src={imageSrc}
-        alt={author}
-        fill
-        style={{
-          objectFit: "cover",
-          borderRadius: "16px",
-          objectPosition: "center",
-          zIndex: "-1",
-        }}
-      />
-      <AvatarContainer>
-        <Avatar
-          src={avatarSrc}
-          alt={author}
-          sx={{
-            width: { xs: `${avatarSize - 10}px`, md: `${avatarSize}px` },
-            height: { xs: `${avatarSize - 10}px`, md: `${avatarSize}px` },
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-          }}
+    <Figure>
+      <Frame
+        sx={primary ? { minHeight: { xs: "420px", md: "520px" } } : undefined}
+      >
+        <Image
+          src={imageSrc}
+          alt={`Tatuaje por ${author}`}
+          fill
+          sizes={
+            primary
+              ? "(min-width: 900px) 600px, 100vw"
+              : "(min-width: 900px) 300px, 50vw"
+          }
+          style={{ objectFit: "cover" }}
         />
-        <Typography
-          color="primary"
-          variant={typographyVariant}
-          letterSpacing={1}
-        >
-          {`By ${author}`}
-        </Typography>
-      </AvatarContainer>
-    </>
+      </Frame>
+      <Typography component="figcaption" variant="body2" color="text.secondary">
+        por <span style={{ color: colors.bone }}>{author}</span>
+      </Typography>
+    </Figure>
   );
 };
 
